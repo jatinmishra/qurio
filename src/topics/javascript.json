@@ -1,0 +1,278 @@
+
+{
+  "id": "javascript",
+  "title": "JavaScript Fundamentals",
+  "description": "Core JavaScript concepts for software engineers",
+  "icon": "Code",
+  "tags": ["frontend", "programming", "web-development", "fundamentals"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "js-1-1",
+          "question": "What is the main difference between `let`, `const`, and `var` in terms of scope?",
+          "options": [
+            "`var` has function scope, `let` and `const` have block scope",
+            "All three have the same scope behavior",
+            "`let` has function scope, `var` and `const` have block scope",
+            "`const` has global scope, others have local scope"
+          ],
+          "correctAnswer": 0,
+          "explanation": "`var` declarations are function-scoped or globally-scoped, while `let` and `const` declarations are block-scoped. This means `let` and `const` are only accessible within the nearest enclosing block.",
+          "tags": ["variables", "scope", "es6", "fundamentals"]
+        },
+        {
+          "id": "js-1-2",
+          "question": "Which method is used to add elements to the end of an array?",
+          "options": [
+            "unshift()",
+            "push()",
+            "append()",
+            "add()"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `push()` method adds one or more elements to the end of an array and returns the new length of the array.",
+          "tags": ["arrays", "methods", "fundamentals"]
+        },
+        {
+          "id": "js-1-3",
+          "question": "What does `===` operator do in JavaScript?",
+          "options": [
+            "Checks for equality with type coercion",
+            "Checks for strict equality without type coercion",
+            "Assigns a value to a variable",
+            "Compares only data types"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `===` operator checks for strict equality, meaning both value and type must be the same. It does not perform type coercion like the `==` operator.",
+          "tags": ["operators", "comparison", "types", "fundamentals"]
+        },
+        {
+          "id": "js-1-4",
+          "question": "Which of these is NOT a primitive data type in JavaScript?",
+          "options": [
+            "string",
+            "boolean",
+            "object",
+            "number"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Object is not a primitive data type. The primitive data types in JavaScript are: string, number, boolean, undefined, null, symbol, and bigint.",
+          "tags": ["data-types", "primitives", "fundamentals"]
+        },
+        {
+          "id": "js-1-5",
+          "question": "What will `console.log(typeof null)` output?",
+          "options": [
+            "\"null\"",
+            "\"undefined\"",
+            "\"object\"",
+            "\"boolean\""
+          ],
+          "correctAnswer": 2,
+          "explanation": "This is a well-known JavaScript quirk. `typeof null` returns \"object\" due to a bug in the original JavaScript implementation that has been kept for backward compatibility.",
+          "tags": ["types", "quirks", "debugging", "fundamentals"]
+        },
+        {
+          "id": "js-1-6",
+          "question": "How do you create a function in JavaScript?",
+          "options": [
+            "function myFunction() {}",
+            "create myFunction() {}",
+            "def myFunction() {}",
+            "func myFunction() {}"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Functions in JavaScript are created using the `function` keyword followed by the function name and parentheses.",
+          "tags": ["functions", "syntax", "fundamentals"]
+        },
+        {
+          "id": "js-1-7",
+          "question": "What is the correct way to write a JavaScript array?",
+          "options": [
+            "var colors = \"red\", \"green\", \"blue\"",
+            "var colors = [\"red\", \"green\", \"blue\"]",
+            "var colors = 1 = (\"red\"), 2 = (\"green\"), 3 = (\"blue\")",
+            "var colors = (\"red\", \"green\", \"blue\")"
+          ],
+          "correctAnswer": 1,
+          "explanation": "JavaScript arrays are created using square brackets `[]` with elements separated by commas.",
+          "tags": ["arrays", "syntax", "fundamentals"]
+        },
+        {
+          "id": "js-1-8",
+          "question": "Which event occurs when the user clicks on an HTML element?",
+          "options": [
+            "onchange",
+            "onclick",
+            "onmouseclick",
+            "onmouseover"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `onclick` event occurs when a user clicks on an HTML element.",
+          "tags": ["events", "dom", "fundamentals"]
+        },
+        {
+          "id": "js-1-9",
+          "question": "How do you write \"Hello World\" in an alert box?",
+          "options": [
+            "alertBox(\"Hello World\");",
+            "msg(\"Hello World\");",
+            "alert(\"Hello World\");",
+            "msgBox(\"Hello World\");"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The `alert()` function displays an alert dialog with the specified message.",
+          "tags": ["functions", "browser-api", "fundamentals"]
+        },
+        {
+          "id": "js-1-10",
+          "question": "Which operator is used to assign a value to a variable?",
+          "options": [
+            "*",
+            "=",
+            "-",
+            "x"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `=` operator is used for assignment in JavaScript.",
+          "tags": ["operators", "variables", "fundamentals"]
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "js-2-1",
+          "question": "What is closure in JavaScript?",
+          "options": [
+            "A way to close browser windows",
+            "A function that has access to variables in its outer scope",
+            "A method to terminate loops",
+            "A way to hide JavaScript code"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A closure is a function that has access to variables in its outer (enclosing) scope even after the outer function has returned. This is a powerful feature in JavaScript.",
+          "tags": ["closures", "scope", "functions", "advanced"]
+        },
+        {
+          "id": "js-2-2",
+          "question": "What is the purpose of the `bind()` method?",
+          "options": [
+            "To concatenate arrays",
+            "To create a new function with a specific `this` value",
+            "To validate form data",
+            "To convert strings to numbers"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `bind()` method creates a new function that, when called, has its `this` keyword set to the provided value.",
+          "tags": ["functions", "this", "methods", "advanced"]
+        },
+        {
+          "id": "js-2-3",
+          "question": "What does the `map()` method do?",
+          "options": [
+            "Changes the original array",
+            "Creates a new array with results of calling a function for every array element",
+            "Sorts array elements",
+            "Finds a specific element in an array"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `map()` method creates a new array populated with the results of calling a provided function on every element in the calling array.",
+          "tags": ["arrays", "methods", "functional-programming", "intermediate"]
+        },
+        {
+          "id": "js-2-4",
+          "question": "What is event bubbling?",
+          "options": [
+            "Creating animated effects",
+            "When an event propagates from child to parent elements",
+            "Sorting events by priority",
+            "Preventing events from firing"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Event bubbling is when an event starts from the target element and then 'bubbles up' to parent elements in the DOM hierarchy.",
+          "tags": ["events", "dom", "bubbling", "intermediate"]
+        },
+        {
+          "id": "js-2-5",
+          "question": "What is the difference between `call()` and `apply()`?",
+          "options": [
+            "No difference",
+            "`call()` accepts arguments individually, `apply()` accepts an array",
+            "`apply()` is faster than `call()`",
+            "`call()` is for objects, `apply()` is for functions"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Both `call()` and `apply()` invoke a function with a specified `this` value, but `call()` accepts arguments individually while `apply()` accepts an array of arguments.",
+          "tags": ["functions", "this", "methods", "advanced"]
+        },
+        {
+          "id": "js-2-6",
+          "question": "What is a Promise in JavaScript?",
+          "options": [
+            "A guarantee that code will work",
+            "An object representing eventual completion or failure of an async operation",
+            "A type of variable declaration",
+            "A way to create loops"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.",
+          "tags": ["promises", "async", "es6", "intermediate"]
+        },
+        {
+          "id": "js-2-7",
+          "question": "What does `Array.from()` do?",
+          "options": [
+            "Removes elements from an array",
+            "Creates a new array from an array-like or iterable object",
+            "Sorts array elements",
+            "Finds the length of an array"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`Array.from()` creates a new Array instance from an array-like or iterable object.",
+          "tags": ["arrays", "methods", "es6", "intermediate"]
+        },
+        {
+          "id": "js-2-8",
+          "question": "What is destructuring in JavaScript?",
+          "options": [
+            "Breaking code into smaller functions",
+            "A way to extract values from arrays or objects into variables",
+            "Removing elements from arrays",
+            "Converting objects to strings"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Destructuring is a convenient way of extracting multiple values from data stored in objects and arrays.",
+          "tags": ["destructuring", "es6", "syntax", "intermediate"]
+        },
+        {
+          "id": "js-2-9",
+          "question": "What is the purpose of `async/await`?",
+          "options": [
+            "To make code run faster",
+            "To write asynchronous code that looks synchronous",
+            "To create multiple threads",
+            "To handle errors only"
+          ],
+          "correctAnswer": 1,
+          "explanation": "`async/await` allows you to write asynchronous code that looks and behaves more like synchronous code, making it easier to read and understand.",
+          "tags": ["async", "await", "promises", "es8", "advanced"]
+        },
+        {
+          "id": "js-2-10",
+          "question": "What does the spread operator (...) do?",
+          "options": [
+            "Multiplies numbers",
+            "Expands an iterable into individual elements",
+            "Creates comments",
+            "Defines variable scope"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The spread operator (...) allows an iterable such as an array to be expanded in places where zero or more arguments or elements are expected.",
+          "tags": ["spread-operator", "es6", "syntax", "intermediate"]
+        }
+      ]
+    }
+  }
+}

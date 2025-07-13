@@ -1,0 +1,258 @@
+
+{
+  "id": "system-design",
+  "title": "System Design",
+  "description": "Scalable system architecture and design patterns",
+  "icon": "Cpu",
+  "tags": ["backend", "architecture", "scalability", "advanced"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "system-1-1",
+          "question": "What is the primary benefit of using a microservices architecture?",
+          "options": [
+            "Simpler deployment process",
+            "Better scalability and independent service development",
+            "Reduced network latency",
+            "Lower development costs"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Microservices architecture allows different services to be developed, deployed, and scaled independently. This provides better fault isolation, technology diversity, and team autonomy."
+        },
+        {
+          "id": "system-1-2",
+          "question": "What is load balancing?",
+          "options": [
+            "Balancing server costs",
+            "Distributing incoming requests across multiple servers",
+            "Optimizing database queries",
+            "Managing user sessions"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Load balancing distributes incoming network traffic across multiple servers to ensure no single server becomes overwhelmed, improving responsiveness and availability."
+        },
+        {
+          "id": "system-1-3",
+          "question": "What is horizontal scaling?",
+          "options": [
+            "Adding more power to existing servers",
+            "Adding more servers to handle increased load",
+            "Optimizing code performance",
+            "Reducing server usage"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Horizontal scaling (scaling out) means adding more servers to your pool of resources, while vertical scaling (scaling up) means adding more power to existing servers."
+        },
+        {
+          "id": "system-1-4",
+          "question": "What is a CDN (Content Delivery Network)?",
+          "options": [
+            "A type of database",
+            "A network of servers that deliver content based on geographic location",
+            "A programming language",
+            "A security protocol"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A CDN is a network of geographically distributed servers that deliver web content to users based on their location, reducing latency and improving performance."
+        },
+        {
+          "id": "system-1-5",
+          "question": "What is database replication?",
+          "options": [
+            "Creating backup copies of database data across multiple servers",
+            "Optimizing database queries",
+            "Encrypting database data",
+            "Compressing database files"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Database replication involves creating and maintaining copies of database data across multiple servers to improve availability, fault tolerance, and read performance."
+        },
+        {
+          "id": "system-1-6",
+          "question": "What is the purpose of caching?",
+          "options": [
+            "To secure data",
+            "To temporarily store frequently accessed data for faster retrieval",
+            "To compress data",
+            "To backup data"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Caching stores frequently accessed data in fast storage (like memory) to reduce the time needed to access that data, improving system performance."
+        },
+        {
+          "id": "system-1-7",
+          "question": "What is a RESTful API?",
+          "options": [
+            "A type of database",
+            "An architectural style for designing web services",
+            "A programming language",
+            "A security protocol"
+          ],
+          "correctAnswer": 1,
+          "explanation": "REST (Representational State Transfer) is an architectural style for designing web services that uses HTTP methods and follows specific principles for creating scalable APIs."
+        },
+        {
+          "id": "system-1-8",
+          "question": "What is the difference between SQL and NoSQL databases?",
+          "options": [
+            "SQL is faster than NoSQL",
+            "SQL uses structured schemas, NoSQL is more flexible with data structure",
+            "NoSQL is always better for large applications",
+            "SQL is only for small applications"
+          ],
+          "correctAnswer": 1,
+          "explanation": "SQL databases use structured schemas and relationships, while NoSQL databases are more flexible with data structure and can handle unstructured data better."
+        },
+        {
+          "id": "system-1-9",
+          "question": "What is a message queue?",
+          "options": [
+            "A type of database query",
+            "A system for asynchronous communication between services",
+            "A user interface component",
+            "A security feature"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A message queue is a communication method where messages are stored in a queue until they can be processed, enabling asynchronous communication between different parts of a system."
+        },
+        {
+          "id": "system-1-10",
+          "question": "What is the purpose of a reverse proxy?",
+          "options": [
+            "To hide client information",
+            "To act as an intermediary for requests from clients seeking resources from servers",
+            "To encrypt data",
+            "To compress files"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A reverse proxy sits between clients and servers, forwarding client requests to servers and then returning the server's response back to clients. It can provide load balancing, SSL termination, and caching."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "system-2-1",
+          "question": "Which caching strategy involves updating the cache whenever the database is updated?",
+          "options": [
+            "Cache-aside",
+            "Write-through",
+            "Write-behind",
+            "Refresh-ahead"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Write-through caching updates both the cache and the database simultaneously when data is written. This ensures cache consistency but can increase write latency."
+        },
+        {
+          "id": "system-2-2",
+          "question": "What is the CAP theorem in distributed systems?",
+          "options": [
+            "A system can guarantee Consistency, Availability, and Partition tolerance simultaneously",
+            "A system can only guarantee two out of three: Consistency, Availability, and Partition tolerance",
+            "A system must choose between Consistency and Performance",
+            "A system can achieve perfect Availability with proper design"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The CAP theorem states that a distributed system can only guarantee two out of three properties: Consistency, Availability, and Partition tolerance. During network partitions, you must choose between consistency and availability."
+        },
+        {
+          "id": "system-2-3",
+          "question": "What is database sharding?",
+          "options": [
+            "Creating database backups",
+            "Horizontally partitioning data across multiple databases",
+            "Optimizing database queries",
+            "Encrypting database data"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Database sharding is a method of horizontally partitioning data across multiple database instances, distributing the load and improving performance for large datasets."
+        },
+        {
+          "id": "system-2-4",
+          "question": "What is eventual consistency?",
+          "options": [
+            "Data is always consistent",
+            "Data will become consistent over time, but may be temporarily inconsistent",
+            "Data is never consistent",
+            "Data consistency is checked manually"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Eventual consistency means that the system will become consistent over time, but there may be periods where different parts of the system have different views of the data."
+        },
+        {
+          "id": "system-2-5",
+          "question": "What is circuit breaker pattern?",
+          "options": [
+            "A security mechanism",
+            "A pattern to prevent cascading failures by failing fast",
+            "A database optimization technique",
+            "A user authentication method"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The circuit breaker pattern prevents cascading failures by monitoring for failures and 'opening' the circuit (failing fast) when failure rates exceed a threshold, then periodically testing if the service has recovered."
+        },
+        {
+          "id": "system-2-6",
+          "question": "What is ACID in database systems?",
+          "options": [
+            "A type of database",
+            "Properties ensuring reliable database transactions: Atomicity, Consistency, Isolation, Durability",
+            "A query language",
+            "A performance metric"
+          ],
+          "correctAnswer": 1,
+          "explanation": "ACID represents four properties that guarantee reliable database transactions: Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent execution), and Durability (permanent storage)."
+        },
+        {
+          "id": "system-2-7",
+          "question": "What is the purpose of a API Gateway?",
+          "options": [
+            "To store API documentation",
+            "To act as a single entry point for all client requests to backend services",
+            "To generate API code",
+            "To test APIs automatically"
+          ],
+          "correctAnswer": 1,
+          "explanation": "An API Gateway acts as a single entry point for all client requests, providing features like request routing, authentication, rate limiting, and monitoring for microservices."
+        },
+        {
+          "id": "system-2-8",
+          "question": "What is database denormalization?",
+          "options": [
+            "Removing all data from database",
+            "Intentionally introducing redundancy to improve read performance",
+            "Fixing database errors",
+            "Compressing database data"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Database denormalization involves intentionally introducing redundancy into a database design to improve read performance, trading storage space and write complexity for faster queries."
+        },
+        {
+          "id": "system-2-9",
+          "question": "What is idempotency in API design?",
+          "options": [
+            "APIs that never change",
+            "Multiple identical requests have the same effect as a single request",
+            "APIs that are very fast",
+            "APIs that require authentication"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Idempotency means that multiple identical requests should have the same effect as a single request. This is important for reliability and safety in distributed systems."
+        },
+        {
+          "id": "system-2-10",
+          "question": "What is the bulkhead pattern?",
+          "options": [
+            "A data compression technique",
+            "Isolating critical resources to prevent cascading failures",
+            "A security authentication method",
+            "A database indexing strategy"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The bulkhead pattern isolates critical resources (like thread pools or connection pools) to prevent failures in one part of the system from affecting other parts, similar to compartments in a ship."
+        }
+      ]
+    }
+  }
+}

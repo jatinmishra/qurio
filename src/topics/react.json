@@ -1,0 +1,258 @@
+
+{
+  "id": "react",
+  "title": "React Development",
+  "description": "Building scalable applications with React",
+  "icon": "Zap",
+  "tags": ["frontend", "framework", "web-development", "ui"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "react-1-1",
+          "question": "What is the purpose of React's Virtual DOM?",
+          "options": [
+            "To replace the real DOM entirely",
+            "To optimize rendering by minimizing direct DOM manipulations",
+            "To store component state",
+            "To handle routing in React applications"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The Virtual DOM is a programming concept where a virtual representation of the real DOM is kept in memory. React uses it to optimize rendering by calculating the minimal changes needed and applying them efficiently to the real DOM."
+        },
+        {
+          "id": "react-1-2",
+          "question": "What is JSX?",
+          "options": [
+            "A new JavaScript framework",
+            "A syntax extension for JavaScript that looks similar to XML",
+            "A CSS preprocessor",
+            "A testing library"
+          ],
+          "correctAnswer": 1,
+          "explanation": "JSX is a syntax extension for JavaScript that allows you to write HTML-like code within JavaScript. It gets compiled to React.createElement() calls."
+        },
+        {
+          "id": "react-1-3",
+          "question": "How do you create a React component?",
+          "options": [
+            "function MyComponent() { return <div>Hello</div>; }",
+            "component MyComponent() { return <div>Hello</div>; }",
+            "create MyComponent() { return <div>Hello</div>; }",
+            "class MyComponent() { return <div>Hello</div>; }"
+          ],
+          "correctAnswer": 0,
+          "explanation": "React components can be created as functions that return JSX. This is the modern way to create components in React."
+        },
+        {
+          "id": "react-1-4",
+          "question": "What is props in React?",
+          "options": [
+            "Properties passed to components from parent to child",
+            "Internal component state",
+            "CSS styling properties",
+            "Event handlers"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Props are properties passed from parent components to child components. They are read-only and help make components reusable."
+        },
+        {
+          "id": "react-1-5",
+          "question": "What hook is used to manage state in functional components?",
+          "options": [
+            "useEffect",
+            "useState",
+            "useContext",
+            "useReducer"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The useState hook allows you to add state to functional components. It returns the current state value and a function to update it."
+        },
+        {
+          "id": "react-1-6",
+          "question": "What is the correct way to handle events in React?",
+          "options": [
+            "onclick=\"handleClick()\"",
+            "onClick={handleClick}",
+            "onClick=\"handleClick()\"",
+            "onPress={handleClick}"
+          ],
+          "correctAnswer": 1,
+          "explanation": "In React, event handlers are passed as functions to JSX elements using camelCase naming convention like onClick."
+        },
+        {
+          "id": "react-1-7",
+          "question": "What is the purpose of keys in React lists?",
+          "options": [
+            "To style list items",
+            "To help React identify which items have changed",
+            "To sort list items",
+            "To filter list items"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Keys help React identify which items have changed, are added, or are removed. This helps React optimize re-rendering of lists."
+        },
+        {
+          "id": "react-1-8",
+          "question": "What does the useEffect hook do?",
+          "options": [
+            "Manages component state",
+            "Performs side effects in functional components",
+            "Creates new components",
+            "Handles user input"
+          ],
+          "correctAnswer": 1,
+          "explanation": "useEffect lets you perform side effects in functional components, such as data fetching, subscriptions, or manually changing the DOM."
+        },
+        {
+          "id": "react-1-9",
+          "question": "What is conditional rendering in React?",
+          "options": [
+            "Rendering components based on certain conditions",
+            "Rendering components in a specific order",
+            "Rendering components with animations",
+            "Rendering components asynchronously"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Conditional rendering in React refers to rendering different components or elements based on certain conditions, often using JavaScript operators like && or ternary operators."
+        },
+        {
+          "id": "react-1-10",
+          "question": "How do you pass data from child to parent component?",
+          "options": [
+            "Using props",
+            "Using callback functions passed as props",
+            "Using state",
+            "Using context"
+          ],
+          "correctAnswer": 1,
+          "explanation": "To pass data from child to parent, you pass a callback function as a prop to the child component, which the child can call with the data."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "react-2-1",
+          "question": "When should you use useCallback hook?",
+          "options": [
+            "Every time you define a function in a component",
+            "When you want to memoize a function to prevent unnecessary re-renders",
+            "Only with async functions",
+            "When working with forms"
+          ],
+          "correctAnswer": 1,
+          "explanation": "useCallback is used to memoize functions and prevent unnecessary re-renders of child components that depend on those functions as props. It's particularly useful when passing callbacks to optimized child components."
+        },
+        {
+          "id": "react-2-2",
+          "question": "What is the correct way to update state that depends on the previous state?",
+          "options": [
+            "setState(state + 1)",
+            "setState(prevState => prevState + 1)",
+            "setState(this.state + 1)",
+            "setState(currentState + 1)"
+          ],
+          "correctAnswer": 1,
+          "explanation": "When updating state based on the previous state, you should use the functional form of setState that receives the previous state as an argument. This ensures you're working with the most current state value."
+        },
+        {
+          "id": "react-2-3",
+          "question": "What is React.memo used for?",
+          "options": [
+            "Memory management",
+            "Memoizing component renders to prevent unnecessary re-renders",
+            "Storing component state",
+            "Creating animations"
+          ],
+          "correctAnswer": 1,
+          "explanation": "React.memo is a higher-order component that memoizes the result of a component. It only re-renders if its props have changed, which can improve performance."
+        },
+        {
+          "id": "react-2-4",
+          "question": "What is the purpose of useReducer?",
+          "options": [
+            "To reduce bundle size",
+            "To manage complex state logic",
+            "To reduce component count",
+            "To optimize performance"
+          ],
+          "correctAnswer": 1,
+          "explanation": "useReducer is useful for managing complex state logic that involves multiple sub-values or when the next state depends on the previous one."
+        },
+        {
+          "id": "react-2-5",
+          "question": "What is React Context used for?",
+          "options": [
+            "Styling components",
+            "Sharing state across components without prop drilling",
+            "Managing component lifecycle",
+            "Handling events"
+          ],
+          "correctAnswer": 1,
+          "explanation": "React Context provides a way to pass data through the component tree without having to pass props down manually at every level (prop drilling)."
+        },
+        {
+          "id": "react-2-6",
+          "question": "What is the difference between controlled and uncontrolled components?",
+          "options": [
+            "Controlled components manage their own state, uncontrolled don't",
+            "Controlled components have their state managed by React, uncontrolled manage their own",
+            "No difference",
+            "Controlled components are faster"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Controlled components have their state managed by React (via props and state), while uncontrolled components manage their own state internally (like traditional HTML form elements)."
+        },
+        {
+          "id": "react-2-7",
+          "question": "What is the purpose of useMemo?",
+          "options": [
+            "To memoize expensive calculations",
+            "To manage component state",
+            "To handle side effects",
+            "To create refs"
+          ],
+          "correctAnswer": 0,
+          "explanation": "useMemo is used to memoize expensive calculations so they're only re-computed when their dependencies change, improving performance."
+        },
+        {
+          "id": "react-2-8",
+          "question": "What is prop drilling?",
+          "options": [
+            "Creating props dynamically",
+            "Passing props through multiple component layers",
+            "Validating props",
+            "Optimizing prop performance"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Prop drilling refers to the process of passing props through multiple levels of components to reach a deeply nested component that needs the data."
+        },
+        {
+          "id": "react-2-9",
+          "question": "What is the purpose of useRef?",
+          "options": [
+            "To reference DOM elements or persist values across renders",
+            "To manage component state",
+            "To handle side effects",
+            "To optimize performance"
+          ],
+          "correctAnswer": 0,
+          "explanation": "useRef can be used to reference DOM elements directly or to persist values across renders without triggering re-renders."
+        },
+        {
+          "id": "react-2-10",
+          "question": "What is React Suspense used for?",
+          "options": [
+            "Error handling",
+            "Code splitting and lazy loading",
+            "State management",
+            "Performance optimization"
+          ],
+          "correctAnswer": 1,
+          "explanation": "React Suspense is used for code splitting and lazy loading components, allowing you to display fallback content while waiting for components to load."
+        }
+      ]
+    }
+  }
+}

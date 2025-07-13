@@ -1,0 +1,102 @@
+
+{
+  "id": "cybersecurity",
+  "title": "Cybersecurity Fundamentals",
+  "description": "Learn security principles, threats, and protection strategies",
+  "icon": "🔒",
+  "tags": ["security", "fundamentals", "trending", "networking"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "sec_001",
+          "question": "What are the three pillars of information security (CIA triad)?",
+          "options": [
+            "Confidentiality, Integrity, Availability",
+            "Encryption, Authentication, Authorization",
+            "Prevention, Detection, Response",
+            "Risk, Threat, Vulnerability"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The CIA triad consists of Confidentiality (protecting data from unauthorized access), Integrity (ensuring data accuracy), and Availability (ensuring data is accessible when needed)."
+        },
+        {
+          "id": "sec_002",
+          "question": "What is the difference between authentication and authorization?",
+          "options": [
+            "They are the same thing",
+            "Authentication verifies identity, authorization determines permissions",
+            "Authorization is stronger than authentication",
+            "Authentication is only for passwords"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Authentication verifies who you are (identity verification), while authorization determines what you're allowed to do (permission checking) after authentication."
+        },
+        {
+          "id": "sec_003",
+          "question": "What is a vulnerability in cybersecurity context?",
+          "options": [
+            "A type of malware",
+            "A weakness in a system that can be exploited",
+            "A security policy",
+            "An encryption method"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A vulnerability is a weakness or flaw in a system, application, or process that could be exploited by threats to compromise security."
+        },
+        {
+          "id": "sec_004",
+          "question": "What is phishing?",
+          "options": [
+            "A type of encryption",
+            "A social engineering attack that tricks users into revealing sensitive information",
+            "A network monitoring technique",
+            "A password storage method"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Phishing is a social engineering attack where attackers impersonate legitimate entities to trick victims into revealing sensitive information like passwords or credit card numbers."
+        },
+        {
+          "id": "sec_005",
+          "question": "What is the purpose of a firewall?",
+          "options": [
+            "To encrypt data",
+            "To monitor and control incoming and outgoing network traffic",
+            "To store passwords securely",
+            "To detect viruses"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A firewall acts as a barrier between trusted internal networks and untrusted external networks, monitoring and controlling traffic based on predetermined security rules."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "sec_006",
+          "question": "What is SQL injection?",
+          "options": [
+            "A database optimization technique",
+            "An attack that inserts malicious SQL code into application queries",
+            "A method to improve database performance",
+            "A type of database backup"
+          ],
+          "correctAnswer": 1,
+          "explanation": "SQL injection is a web security vulnerability that allows attackers to interfere with database queries by inserting malicious SQL code, potentially accessing or modifying sensitive data."
+        },
+        {
+          "id": "sec_007",
+          "question": "What is zero-trust security?",
+          "options": [
+            "Having no trust in employees",
+            "A security model that requires verification for every user and device",
+            "Using no security measures",
+            "A type of encryption"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Zero-trust is a security framework that assumes breach and verifies each request as though it originates from an open network, requiring continuous validation regardless of location or context."
+        }
+      ]
+    }
+  }
+}

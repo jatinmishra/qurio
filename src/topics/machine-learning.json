@@ -1,0 +1,102 @@
+
+{
+  "id": "machine-learning",
+  "title": "Machine Learning Fundamentals",
+  "description": "Explore ML algorithms, concepts, and practical applications",
+  "icon": "🤖",
+  "tags": ["ai", "ml", "trending", "data-science"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "ml_001",
+          "question": "What are the three main types of machine learning?",
+          "options": [
+            "Fast, Medium, Slow learning",
+            "Supervised, Unsupervised, Reinforcement learning",
+            "Linear, Non-linear, Deep learning",
+            "Classification, Regression, Clustering"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The three main paradigms are: Supervised learning (learns from labeled data), Unsupervised learning (finds patterns in unlabeled data), and Reinforcement learning (learns through interaction and rewards)."
+        },
+        {
+          "id": "ml_002",
+          "question": "What is overfitting in machine learning?",
+          "options": [
+            "When a model is too simple",
+            "When a model performs well on training data but poorly on new data",
+            "When training takes too long",
+            "When the dataset is too large"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Overfitting occurs when a model learns the training data too well, including noise and irrelevant patterns, causing poor performance on new, unseen data."
+        },
+        {
+          "id": "ml_003",
+          "question": "What is the purpose of a validation set in machine learning?",
+          "options": [
+            "To train the model",
+            "To test the final model performance",
+            "To tune hyperparameters and prevent overfitting",
+            "To store backup data"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A validation set is used during model development to tune hyperparameters, select the best model, and get an unbiased evaluation before final testing."
+        },
+        {
+          "id": "ml_004",
+          "question": "What is the difference between classification and regression?",
+          "options": [
+            "Classification predicts categories, regression predicts continuous values",
+            "Regression is faster than classification",
+            "Classification only works with numbers",
+            "There is no difference"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Classification predicts discrete categories or classes (e.g., spam/not spam), while regression predicts continuous numerical values (e.g., house prices)."
+        },
+        {
+          "id": "ml_005",
+          "question": "What is feature engineering?",
+          "options": [
+            "Building new computers for ML",
+            "The process of selecting and transforming input variables for models",
+            "Writing code for ML algorithms",
+            "Designing user interfaces for ML applications"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Feature engineering involves selecting, modifying, or creating input variables (features) to improve model performance, including normalization, encoding, and creating derived features."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "ml_006",
+          "question": "What is gradient descent?",
+          "options": [
+            "A type of neural network",
+            "An optimization algorithm to minimize cost functions",
+            "A data preprocessing technique",
+            "A model evaluation metric"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Gradient descent is an iterative optimization algorithm that finds the minimum of a function by moving in the direction of steepest descent, commonly used to train ML models."
+        },
+        {
+          "id": "ml_007",
+          "question": "What is the curse of dimensionality?",
+          "options": [
+            "Having too many model parameters",
+            "Performance degradation as the number of features increases",
+            "Training taking too long",
+            "Models becoming too complex"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The curse of dimensionality refers to phenomena where algorithms perform poorly in high-dimensional spaces due to data sparsity and increased computational complexity."
+        }
+      ]
+    }
+  }
+}

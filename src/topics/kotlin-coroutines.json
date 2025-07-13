@@ -1,0 +1,74 @@
+
+{
+  "id": "kotlin-coroutines",
+  "title": "Kotlin Coroutines",
+  "description": "Asynchronous programming with Kotlin Coroutines - suspend functions, scopes, and structured concurrency",
+  "icon": "⚡",
+  "tags": ["kotlin", "android", "coroutines", "async", "concurrency"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "kc1",
+          "question": "What keyword is used to define a suspending function?",
+          "options": [
+            "async",
+            "suspend",
+            "await",
+            "coroutine"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The 'suspend' keyword marks a function as suspending, meaning it can be paused and resumed without blocking the thread."
+        },
+        {
+          "id": "kc2",
+          "question": "Which function is used to start a new coroutine?",
+          "options": [
+            "async",
+            "launch",
+            "runBlocking",
+            "All of the above"
+          ],
+          "correctAnswer": 3,
+          "explanation": "async, launch, and runBlocking are all coroutine builders that start new coroutines, each with different purposes."
+        },
+        {
+          "id": "kc3",
+          "question": "What's the difference between launch and async?",
+          "options": [
+            "launch returns a result, async doesn't",
+            "async returns a result, launch doesn't",
+            "No difference",
+            "launch is for UI, async is for background"
+          ],
+          "correctAnswer": 1,
+          "explanation": "async returns a Deferred that can provide a result, while launch returns a Job and is used for fire-and-forget operations."
+        },
+        {
+          "id": "kc4",
+          "question": "Which dispatcher should be used for CPU-intensive work?",
+          "options": [
+            "Dispatchers.Main",
+            "Dispatchers.IO",
+            "Dispatchers.Default",
+            "Dispatchers.Unconfined"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Dispatchers.Default is optimized for CPU-intensive work and uses a shared pool of background threads."
+        },
+        {
+          "id": "kc5",
+          "question": "What happens when a coroutine scope is cancelled?",
+          "options": [
+            "Only the parent coroutine is cancelled",
+            "All child coroutines are cancelled",
+            "Nothing happens",
+            "Only currently running coroutines are cancelled"
+          ],
+          "correctAnswer": 1,
+          "explanation": "When a coroutine scope is cancelled, all child coroutines are automatically cancelled as part of structured concurrency."
+        }
+      ]
+    }
+  }
+}

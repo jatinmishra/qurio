@@ -1,0 +1,74 @@
+
+{
+  "id": "ios-combine",
+  "title": "iOS Combine Framework",
+  "description": "Master Combine - Publishers, Subscribers, Operators, and reactive programming in iOS",
+  "icon": "🔄",
+  "tags": ["ios", "swift", "combine", "reactive", "async"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "cb1",
+          "question": "What are the two main protocols in Combine?",
+          "options": [
+            "Publisher and Subscriber",
+            "Observable and Observer",
+            "Stream and Listener",
+            "Emitter and Receiver"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Publisher and Subscriber are the core protocols in Combine. Publishers emit values over time, Subscribers receive those values."
+        },
+        {
+          "id": "cb2",
+          "question": "Which operator transforms each element from upstream publisher?",
+          "options": [
+            "filter",
+            "map",
+            "reduce",
+            "scan"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The map operator transforms each element emitted by the upstream publisher using a provided closure."
+        },
+        {
+          "id": "cb3",
+          "question": "What does the @Published property wrapper do?",
+          "options": [
+            "Makes property thread-safe",
+            "Creates a publisher for the property",
+            "Validates property values",
+            "Caches property values"
+          ],
+          "correctAnswer": 1,
+          "explanation": "@Published creates a publisher that emits the property's value whenever it changes, commonly used with ObservableObject."
+        },
+        {
+          "id": "cb4",
+          "question": "Which method do you use to handle completion and failure?",
+          "options": [
+            "sink()",
+            "receive()",
+            "subscribe()",
+            "assign()"
+          ],
+          "correctAnswer": 0,
+          "explanation": "sink() allows you to provide closures for both receiving values and handling completion (including failures)."
+        },
+        {
+          "id": "cb5",
+          "question": "What's the purpose of AnyCancellable?",
+          "options": [
+            "Type erasure for cancellables",
+            "Memory management",
+            "Error handling",
+            "Thread synchronization"
+          ],
+          "correctAnswer": 0,
+          "explanation": "AnyCancellable provides type erasure for cancellables and automatically cancels subscriptions when deallocated."
+        }
+      ]
+    }
+  }
+}

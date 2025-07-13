@@ -1,0 +1,74 @@
+
+{
+  "id": "docker-containers",
+  "title": "Docker Containers",
+  "description": "Containerization with Docker - images, containers, Dockerfile, Docker Compose, and best practices",
+  "icon": "🐳",
+  "tags": ["docker", "containers", "devops", "deployment"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "dc1",
+          "question": "What's the difference between a Docker image and a container?",
+          "options": [
+            "No difference, they're the same",
+            "Image is running, container is static",
+            "Image is a template, container is a running instance",
+            "Container is bigger than image"
+          ],
+          "correctAnswer": 2,
+          "explanation": "A Docker image is a read-only template used to create containers. A container is a running instance of an image."
+        },
+        {
+          "id": "dc2",
+          "question": "Which instruction in Dockerfile sets the base image?",
+          "options": [
+            "BASE",
+            "FROM",
+            "IMAGE",
+            "TEMPLATE"
+          ],
+          "correctAnswer": 1,
+          "explanation": "FROM instruction specifies the base image to use for the Docker image being built."
+        },
+        {
+          "id": "dc3",
+          "question": "What does the -d flag do when running docker run?",
+          "options": [
+            "Deletes the container after running",
+            "Runs container in debug mode",
+            "Runs container in detached mode",
+            "Downloads the image first"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The -d flag runs the container in detached mode (in the background), returning control to the terminal."
+        },
+        {
+          "id": "dc4",
+          "question": "Which command lists all running containers?",
+          "options": [
+            "docker list",
+            "docker ps",
+            "docker containers",
+            "docker show"
+          ],
+          "correctAnswer": 1,
+          "explanation": "docker ps lists all currently running containers. Use docker ps -a to see all containers including stopped ones."
+        },
+        {
+          "id": "dc5",
+          "question": "What's the purpose of .dockerignore file?",
+          "options": [
+            "Configure Docker settings",
+            "Exclude files from build context",
+            "Define environment variables",
+            "Set container permissions"
+          ],
+          "correctAnswer": 1,
+          "explanation": ".dockerignore excludes files and directories from the build context, reducing build time and image size."
+        }
+      ]
+    }
+  }
+}

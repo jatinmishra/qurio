@@ -1,0 +1,74 @@
+
+{
+  "id": "nextjs",
+  "title": "Next.js",
+  "description": "React framework for production - SSR, SSG, API routes, routing, and performance optimization",
+  "icon": "▲",
+  "tags": ["nextjs", "react", "ssr", "frontend", "fullstack"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "nx1",
+          "question": "What's the difference between SSR and SSG in Next.js?",
+          "options": [
+            "SSR is client-side, SSG is server-side",
+            "SSR renders at request time, SSG renders at build time",
+            "No difference",
+            "SSG is deprecated"
+          ],
+          "correctAnswer": 1,
+          "explanation": "SSR (Server-Side Rendering) renders pages on each request, while SSG (Static Site Generation) pre-renders pages at build time."
+        },
+        {
+          "id": "nx2",
+          "question": "Which function enables SSG with data fetching?",
+          "options": [
+            "getServerSideProps",
+            "getStaticProps",
+            "getInitialProps",
+            "getStaticData"
+          ],
+          "correctAnswer": 1,
+          "explanation": "getStaticProps runs at build time and allows you to fetch data for static generation."
+        },
+        {
+          "id": "nx3",
+          "question": "How do you create an API route in Next.js?",
+          "options": [
+            "Create a file in /api directory",
+            "Create a file in /pages/api directory",
+            "Use the api() function",
+            "Import express"
+          ],
+          "correctAnswer": 1,
+          "explanation": "API routes are created by adding files to the /pages/api directory. Each file becomes an API endpoint."
+        },
+        {
+          "id": "nx4",
+          "question": "What does the Image component optimize?",
+          "options": [
+            "Only file size",
+            "Only loading performance",
+            "Size, format, and loading with lazy loading",
+            "Only image quality"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Next.js Image component optimizes images by resizing, changing formats, and implementing lazy loading automatically."
+        },
+        {
+          "id": "nx5",
+          "question": "What's the purpose of the _app.js file?",
+          "options": [
+            "Main application configuration",
+            "Global component wrapper",
+            "API configuration",
+            "Both A and B"
+          ],
+          "correctAnswer": 3,
+          "explanation": "_app.js wraps all page components and is used for global configuration, global CSS, and persistent layouts."
+        }
+      ]
+    }
+  }
+}

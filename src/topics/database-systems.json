@@ -1,0 +1,102 @@
+
+{
+  "id": "database-systems",
+  "title": "Database Management Systems",
+  "description": "Learn database fundamentals, design principles, and query optimization",
+  "icon": "🗄️",
+  "tags": ["database", "sql", "fundamentals", "backend"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "db_001",
+          "question": "What is ACID in database systems?",
+          "options": [
+            "A type of database",
+            "Atomicity, Consistency, Isolation, Durability",
+            "A query language",
+            "A database design pattern"
+          ],
+          "correctAnswer": 1,
+          "explanation": "ACID represents four key properties that guarantee reliable database transactions: Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent transactions don't interfere), and Durability (committed changes persist)."
+        },
+        {
+          "id": "db_002",
+          "question": "What is the primary purpose of database normalization?",
+          "options": [
+            "To increase query speed",
+            "To reduce data redundancy and improve data integrity",
+            "To make databases larger",
+            "To encrypt sensitive data"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Database normalization organizes data to reduce redundancy and dependency, improving data integrity and reducing storage space while preventing update anomalies."
+        },
+        {
+          "id": "db_003",
+          "question": "What is a primary key in a database table?",
+          "options": [
+            "The most important column",
+            "A unique identifier for each row in the table",
+            "The first column in the table",
+            "A column that references another table"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A primary key is a column (or combination of columns) that uniquely identifies each row in a table. It cannot contain NULL values and must be unique."
+        },
+        {
+          "id": "db_004",
+          "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+          "options": [
+            "No difference, they are the same",
+            "INNER JOIN returns only matching rows, LEFT JOIN returns all rows from left table",
+            "LEFT JOIN is faster than INNER JOIN",
+            "INNER JOIN can only join two tables"
+          ],
+          "correctAnswer": 1,
+          "explanation": "INNER JOIN returns only rows that have matching values in both tables. LEFT JOIN returns all rows from the left table and matched rows from the right table (with NULLs for non-matches)."
+        },
+        {
+          "id": "db_005",
+          "question": "What is an index in a database?",
+          "options": [
+            "A backup of the database",
+            "A data structure that improves query performance",
+            "A type of constraint",
+            "A database user role"
+          ],
+          "correctAnswer": 1,
+          "explanation": "An index is a data structure that provides fast access paths to table data, similar to an index in a book. It speeds up SELECT queries but can slow down INSERT/UPDATE/DELETE operations."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "db_006",
+          "question": "What is the CAP theorem in distributed databases?",
+          "options": [
+            "Consistency, Availability, Partition tolerance - you can only guarantee two",
+            "A method for database backup",
+            "A type of database index",
+            "A SQL optimization technique"
+          ],
+          "correctAnswer": 0,
+          "explanation": "CAP theorem states that in a distributed system, you can only simultaneously provide two of three guarantees: Consistency, Availability, and Partition tolerance."
+        },
+        {
+          "id": "db_007",
+          "question": "What is database sharding?",
+          "options": [
+            "Creating database backups",
+            "Horizontally partitioning data across multiple databases",
+            "Encrypting database contents",
+            "Optimizing database queries"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Sharding is a database partitioning technique that splits large datasets horizontally across multiple database instances to improve performance and scalability."
+        }
+      ]
+    }
+  }
+}

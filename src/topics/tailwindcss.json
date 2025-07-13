@@ -1,0 +1,74 @@
+
+{
+  "id": "tailwindcss",
+  "title": "Tailwind CSS",
+  "description": "Utility-first CSS framework - responsive design, customization, components, and best practices",
+  "icon": "🎨",
+  "tags": ["tailwindcss", "css", "frontend", "styling"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "tw1",
+          "question": "What is the philosophy behind Tailwind CSS?",
+          "options": [
+            "Component-first",
+            "Utility-first",
+            "Semantic-first",
+            "Framework-first"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Tailwind CSS follows a utility-first approach, providing low-level utility classes to build custom designs."
+        },
+        {
+          "id": "tw2",
+          "question": "How do you apply responsive styles in Tailwind?",
+          "options": [
+            "Use @media queries",
+            "Use breakpoint prefixes like md:, lg:",
+            "Use responsive() function",
+            "Use separate CSS files"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Tailwind uses breakpoint prefixes (sm:, md:, lg:, xl:, 2xl:) to apply styles at different screen sizes."
+        },
+        {
+          "id": "tw3",
+          "question": "What does the @apply directive do?",
+          "options": [
+            "Applies global styles",
+            "Extracts utility classes into custom CSS",
+            "Imports Tailwind base styles",
+            "Compiles the CSS"
+          ],
+          "correctAnswer": 1,
+          "explanation": "@apply directive allows you to extract utility classes into custom CSS classes, useful for component styles."
+        },
+        {
+          "id": "tw4",
+          "question": "Which file is used to customize Tailwind's default configuration?",
+          "options": [
+            "tailwind.css",
+            "tailwind.config.js",
+            "config.tailwind.js",
+            "tailwind.settings.js"
+          ],
+          "correctAnswer": 1,
+          "explanation": "tailwind.config.js is used to customize Tailwind's default theme, add plugins, and configure other settings."
+        },
+        {
+          "id": "tw5",
+          "question": "What does the 'purge' option do in Tailwind config?",
+          "options": [
+            "Removes unused CSS",
+            "Compresses images",
+            "Minifies JavaScript",
+            "Optimizes fonts"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The purge option (now called 'content') removes unused CSS classes from the final build, significantly reducing file size."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,258 @@
+
+{
+  "id": "git",
+  "title": "Git & Version Control",
+  "description": "Version control workflows and best practices",
+  "icon": "GitBranch",
+  "tags": ["version-control", "tools", "collaboration", "fundamentals"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "git-1-1",
+          "question": "What is the purpose of a `.gitignore` file?",
+          "options": [
+            "To ignore Git commands",
+            "To specify files and directories that Git should not track",
+            "To configure Git settings",
+            "To store Git commit messages"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The .gitignore file tells Git which files and directories to ignore when tracking changes. This is useful for excluding build artifacts, temporary files, IDE configurations, and other files that shouldn't be version controlled."
+        },
+        {
+          "id": "git-1-2",
+          "question": "What command is used to initialize a new Git repository?",
+          "options": [
+            "git start",
+            "git init",
+            "git create",
+            "git new"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `git init` command creates a new Git repository in the current directory by creating a .git subdirectory."
+        },
+        {
+          "id": "git-1-3",
+          "question": "What does `git add` do?",
+          "options": [
+            "Commits changes to the repository",
+            "Stages changes for the next commit",
+            "Creates a new branch",
+            "Merges branches"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `git add` command stages changes (adds them to the staging area) so they can be included in the next commit."
+        },
+        {
+          "id": "git-1-4",
+          "question": "How do you check the current status of your Git repository?",
+          "options": [
+            "git check",
+            "git status",
+            "git info",
+            "git state"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `git status` command shows the current state of the working directory and staging area, including which files are modified, staged, or untracked."
+        },
+        {
+          "id": "git-1-5",
+          "question": "What command creates a commit?",
+          "options": [
+            "git save",
+            "git commit",
+            "git push",
+            "git store"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `git commit` command records changes to the repository with a commit message describing what was changed."
+        },
+        {
+          "id": "git-1-6",
+          "question": "How do you create a new branch?",
+          "options": [
+            "git branch new-branch",
+            "git create new-branch",
+            "git new new-branch",
+            "git make new-branch"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The `git branch` command followed by a branch name creates a new branch. You can also use `git checkout -b new-branch` to create and switch to the new branch."
+        },
+        {
+          "id": "git-1-7",
+          "question": "What does `git clone` do?",
+          "options": [
+            "Creates a copy of a local repository",
+            "Downloads a repository from a remote source",
+            "Duplicates the current branch",
+            "Copies files between directories"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `git clone` command creates a local copy of a remote repository, including all its history and branches."
+        },
+        {
+          "id": "git-1-8",
+          "question": "How do you switch between branches?",
+          "options": [
+            "git switch branch-name",
+            "git checkout branch-name",
+            "Both A and B are correct",
+            "git change branch-name"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Both `git switch` (newer command) and `git checkout` can be used to switch between branches in Git."
+        },
+        {
+          "id": "git-1-9",
+          "question": "What is a commit in Git?",
+          "options": [
+            "A promise to finish coding",
+            "A snapshot of changes in the repository",
+            "A type of branch",
+            "A remote repository"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A commit is a snapshot of the repository at a specific point in time, containing the changes made since the last commit along with metadata like author and timestamp."
+        },
+        {
+          "id": "git-1-10",
+          "question": "What does `git push` do?",
+          "options": [
+            "Pulls changes from remote repository",
+            "Uploads local commits to a remote repository",
+            "Creates a new repository",
+            "Deletes local changes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The `git push` command uploads your local commits to a remote repository, making them available to other developers."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "git-2-1",
+          "question": "What is the difference between `git merge` and `git rebase`?",
+          "options": [
+            "No difference, they do the same thing",
+            "Merge creates a merge commit, rebase rewrites history linearly",
+            "Rebase is only for remote branches",
+            "Merge is faster than rebase"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git merge creates a new merge commit that combines two branches, preserving the branch history. Git rebase rewrites the commit history by moving commits from one branch onto another, creating a linear history."
+        },
+        {
+          "id": "git-2-2",
+          "question": "What does `git cherry-pick` do?",
+          "options": [
+            "Selects the best commits from a branch",
+            "Applies a specific commit from one branch to another",
+            "Removes unwanted commits",
+            "Merges only selected files"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git cherry-pick allows you to apply a specific commit from one branch to your current branch. This is useful when you want to bring over just one commit without merging the entire branch."
+        },
+        {
+          "id": "git-2-3",
+          "question": "What is `git stash` used for?",
+          "options": [
+            "Permanently deleting changes",
+            "Temporarily storing uncommitted changes",
+            "Creating backup repositories",
+            "Sharing code with team members"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git stash temporarily stores uncommitted changes so you can work on something else, then come back and re-apply them later."
+        },
+        {
+          "id": "git-2-4",
+          "question": "What does `git reset --hard` do?",
+          "options": [
+            "Creates a hard link to the repository",
+            "Resets the working directory and staging area to a specific commit",
+            "Makes the repository read-only",
+            "Increases repository security"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git reset --hard resets both the staging area and working directory to match a specific commit, discarding all uncommitted changes."
+        },
+        {
+          "id": "git-2-5",
+          "question": "What is a Git hook?",
+          "options": [
+            "A way to connect repositories",
+            "Scripts that run automatically at certain Git events",
+            "A type of branch",
+            "A remote repository connection"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git hooks are scripts that run automatically before or after certain Git events like commits, pushes, or receives. They're useful for automating workflows."
+        },
+        {
+          "id": "git-2-6",
+          "question": "What is the difference between `git fetch` and `git pull`?",
+          "options": [
+            "No difference",
+            "Fetch downloads changes without merging, pull downloads and merges",
+            "Fetch is faster than pull",
+            "Pull works only with branches"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git fetch downloads changes from the remote repository but doesn't merge them. Git pull is essentially git fetch followed by git merge."
+        },
+        {
+          "id": "git-2-7",
+          "question": "What does `git bisect` help you do?",
+          "options": [
+            "Split large commits into smaller ones",
+            "Find the commit that introduced a bug using binary search",
+            "Create two branches from one",
+            "Compare two different repositories"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git bisect uses binary search to find the commit that introduced a bug by automatically checking out commits and asking you to mark them as good or bad."
+        },
+        {
+          "id": "git-2-8",
+          "question": "What is a Git submodule?",
+          "options": [
+            "A smaller version of Git",
+            "A repository embedded inside another repository",
+            "A type of branch",
+            "A Git configuration file"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A Git submodule allows you to include one Git repository as a subdirectory of another Git repository, keeping their histories separate."
+        },
+        {
+          "id": "git-2-9",
+          "question": "What does `git reflog` show?",
+          "options": [
+            "Remote repository logs",
+            "A log of where your HEAD and branch references have been",
+            "Deleted files",
+            "Merge conflicts"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git reflog shows a log of where your HEAD and branch references have been, which is useful for recovering lost commits or understanding recent actions."
+        },
+        {
+          "id": "git-2-10",
+          "question": "What is the purpose of `git tag`?",
+          "options": [
+            "To label files in the repository",
+            "To mark specific points in repository history",
+            "To create metadata for commits",
+            "To organize branches"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Git tags are used to mark specific points in repository history, typically for releases. They create a permanent reference to a specific commit."
+        }
+      ]
+    }
+  }
+}

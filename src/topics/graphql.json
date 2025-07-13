@@ -1,0 +1,74 @@
+
+{
+  "id": "graphql",
+  "title": "GraphQL",
+  "description": "Query language for APIs - schemas, resolvers, mutations, subscriptions, and best practices",
+  "icon": "🎯",
+  "tags": ["graphql", "api", "backend", "query"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "gql1",
+          "question": "What are the three main operation types in GraphQL?",
+          "options": [
+            "GET, POST, PUT",
+            "Query, Mutation, Subscription",
+            "Read, Write, Update",
+            "Select, Insert, Delete"
+          ],
+          "correctAnswer": 1,
+          "explanation": "GraphQL has three operation types: Query (read data), Mutation (write data), and Subscription (real-time data)."
+        },
+        {
+          "id": "gql2",
+          "question": "What does a resolver function do?",
+          "options": [
+            "Validates query syntax",
+            "Fetches data for a field",
+            "Caches query results",
+            "Formats response data"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A resolver is a function that fetches the data for a specific field in the GraphQL schema."
+        },
+        {
+          "id": "gql3",
+          "question": "What's the main advantage of GraphQL over REST?",
+          "options": [
+            "Better security",
+            "Faster performance",
+            "Single endpoint with flexible queries",
+            "Easier to implement"
+          ],
+          "correctAnswer": 2,
+          "explanation": "GraphQL provides a single endpoint where clients can request exactly the data they need, reducing over-fetching and under-fetching."
+        },
+        {
+          "id": "gql4",
+          "question": "What is the N+1 problem in GraphQL?",
+          "options": [
+            "Too many concurrent requests",
+            "Making separate database queries for each item in a list",
+            "Schema validation errors",
+            "Memory overflow issues"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The N+1 problem occurs when a resolver makes one query to get a list, then N additional queries to get details for each item."
+        },
+        {
+          "id": "gql5",
+          "question": "What's the purpose of GraphQL fragments?",
+          "options": [
+            "Error handling",
+            "Reusable query parts",
+            "Authentication",
+            "Data validation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Fragments allow you to define reusable pieces of query logic that can be included in multiple operations."
+        }
+      ]
+    }
+  }
+}

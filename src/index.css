@@ -1,0 +1,305 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;700;900&family=Courier+New:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 100% 2%;
+    --foreground: 0 0% 98%;
+    --card: 210 100% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 210 100% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 195 100% 50%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 210 50% 10%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 258 100% 65%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 210 50% 15%;
+    --input: 210 50% 15%;
+    --ring: 142 100% 50%;
+    --radius: 0.5rem;
+  }
+
+  /* Matrix Theme (default) */
+  [data-theme="matrix"] {
+    --primary: 142 100% 50%;
+    --secondary: 195 100% 50%;
+    --accent: 258 100% 65%;
+  }
+
+  /* Tron Theme */
+  [data-theme="tron"] {
+    --primary: 195 100% 50%;
+    --secondary: 142 100% 50%;
+    --accent: 39 100% 50%;
+  }
+
+  /* Cyberpunk Theme */
+  [data-theme="cyberpunk"] {
+    --primary: 320 100% 50%;
+    --secondary: 280 100% 60%;
+    --accent: 60 100% 50%;
+  }
+
+  /* Neon Theme */
+  [data-theme="neon"] {
+    --primary: 120 100% 40%;
+    --secondary: 300 100% 60%;
+    --accent: 180 100% 50%;
+  }
+
+  /* Retro Theme - Black text for better readability */
+  [data-theme="retro"] {
+    --background: 50 40% 95%;
+    --foreground: 0 0% 0%;
+    --card: 50 30% 90%;
+    --card-foreground: 0 0% 0%;
+    --popover: 50 30% 90%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 210 100% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 16 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 50 20% 85%;
+    --muted-foreground: 0 0% 0%;
+    --accent: 300 70% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 50 30% 70%;
+    --input: 50 30% 88%;
+    --ring: 210 100% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.1) 0%, transparent 50%);
+  }
+
+  /* Retro theme specific styles - improved readability */
+  [data-theme="retro"] body {
+    font-family: 'Courier New', monospace;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        hsl(var(--border) / 0.3) 2px,
+        hsl(var(--border) / 0.3) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        hsl(var(--border) / 0.3) 2px,
+        hsl(var(--border) / 0.3) 4px
+      );
+  }
+
+  [data-theme="retro"] .cyber-card {
+    box-shadow: 
+      4px 4px 0px hsl(var(--primary) / 0.3),
+      inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+    border-width: 2px;
+    border-style: solid;
+    border-color: hsl(var(--primary) / 0.8);
+    background: hsl(var(--card));
+  }
+
+  [data-theme="retro"] .cyber-button {
+    box-shadow: 3px 3px 0px hsl(var(--primary) / 0.4);
+    border-width: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: hsl(var(--primary));
+    background: hsl(var(--background));
+  }
+
+  [data-theme="retro"] .cyber-button:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px hsl(var(--primary) / 0.4);
+    color: hsl(var(--primary-foreground));
+    background: hsl(var(--primary));
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+
+  [data-theme="retro"] ::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/60 rounded;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
+}
+
+@layer components {
+  .cyber-card {
+    @apply bg-card border border-primary/30 rounded-lg p-4 sm:p-6 relative overflow-hidden;
+    box-shadow: 
+      0 0 20px hsl(var(--primary) / 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px hsl(var(--primary));
+  }
+
+  .cyber-button {
+    @apply relative px-4 py-2 sm:px-6 sm:py-3 bg-transparent border border-primary text-primary font-medium rounded transition-all duration-300 overflow-hidden text-sm sm:text-base;
+  }
+
+  .cyber-button::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: hsl(var(--primary));
+  }
+
+  .cyber-button:hover::before {
+    @apply opacity-20;
+  }
+
+  .cyber-button:hover {
+    @apply text-white;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+
+  [data-theme="retro"] .cyber-button:hover {
+    @apply text-primary;
+    background: hsl(var(--primary) / 0.1);
+  }
+
+  .matrix-bg {
+    background: 
+      linear-gradient(90deg, transparent 98%, hsl(var(--primary) / 0.2) 100%),
+      linear-gradient(hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+
+  .animate-matrix-rain {
+    animation: matrix-rain 3s linear infinite;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow-pulse {
+    from {
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+    }
+    to {
+      box-shadow: 0 0 30px hsl(var(--primary) / 0.8), 0 0 40px hsl(var(--primary) / 0.3);
+    }
+  }
+
+  @keyframes matrix-rain {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    .cyber-card {
+      @apply p-3;
+    }
+    
+    .cyber-button {
+      @apply px-3 py-2 text-sm;
+    }
+    
+    /* Ensure theme selector doesn't overflow on mobile */
+    .fixed.top-4.right-4 {
+      @apply top-2 right-2;
+    }
+    
+    /* Better touch targets on mobile */
+    .cyber-button, button {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 375px) {
+    .cyber-card {
+      @apply p-2;
+    }
+    
+    .fixed.top-4.right-4 {
+      @apply top-1 right-1;
+    }
+  }
+}
+

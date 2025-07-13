@@ -1,0 +1,74 @@
+
+{
+  "id": "ios-uikit",
+  "title": "iOS UIKit",
+  "description": "Comprehensive UIKit knowledge - Views, Controllers, Auto Layout, and iOS app architecture",
+  "icon": "📱",
+  "tags": ["ios", "swift", "uikit", "mobile"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "ui1",
+          "question": "What is the correct way to create a UIButton programmatically?",
+          "options": [
+            "UIButton(type: .system)",
+            "UIButton.init()",
+            "UIButton(frame: .zero)",
+            "UIButton.systemButton()"
+          ],
+          "correctAnswer": 0,
+          "explanation": "UIButton(type: .system) is the modern way to create a system-styled button programmatically."
+        },
+        {
+          "id": "ui2",
+          "question": "Which method is called when a view controller's view appears?",
+          "options": [
+            "viewDidLoad",
+            "viewWillAppear",
+            "viewDidAppear",
+            "Both viewWillAppear and viewDidAppear"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Both viewWillAppear (called before the view appears) and viewDidAppear (called after the view appears) are called when a view appears."
+        },
+        {
+          "id": "ui3",
+          "question": "What's the difference between frame and bounds?",
+          "options": [
+            "Frame is relative to superview, bounds is relative to itself",
+            "Frame is for position, bounds is for size",
+            "They are the same thing",
+            "Frame is deprecated, use bounds"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Frame defines a view's position and size relative to its superview, while bounds defines the view's coordinate system relative to itself."
+        },
+        {
+          "id": "ui4",
+          "question": "Which Auto Layout constraint has the highest priority by default?",
+          "options": [
+            "Required (1000)",
+            "High (750)",
+            "Low (250)",
+            "Medium (500)"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Required priority (1000) is the highest and must be satisfied. It's the default priority for most constraints."
+        },
+        {
+          "id": "ui5",
+          "question": "What's the purpose of the main queue in iOS?",
+          "options": [
+            "Background processing",
+            "Network requests",
+            "UI updates and user interaction",
+            "Database operations"
+          ],
+          "correctAnswer": 2,
+          "explanation": "The main queue is where all UI updates and user interactions must occur. It's the only thread-safe place for UI operations."
+        }
+      ]
+    }
+  }
+}

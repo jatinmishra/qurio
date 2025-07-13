@@ -1,0 +1,74 @@
+
+{
+  "id": "react-hooks",
+  "title": "React Hooks",
+  "description": "Master React Hooks - useState, useEffect, useContext, custom hooks, and advanced patterns",
+  "icon": "⚛️",
+  "tags": ["frontend", "react", "hooks", "javascript"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "rh1",
+          "question": "What is the correct way to initialize state with useState hook?",
+          "options": [
+            "const [count, setCount] = useState(0);",
+            "const [count, setCount] = useState();",
+            "const count = useState(0);",
+            "const setCount = useState(0);"
+          ],
+          "correctAnswer": 0,
+          "explanation": "useState returns an array with two elements: the current state value and a function to update it. Array destructuring is used to assign these to variables."
+        },
+        {
+          "id": "rh2",
+          "question": "When does useEffect run if no dependency array is provided?",
+          "options": [
+            "Only on component mount",
+            "Only on component unmount",
+            "After every render",
+            "Never runs"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Without a dependency array, useEffect runs after every render (mount and every update)."
+        },
+        {
+          "id": "rh3",
+          "question": "How do you create a cleanup function in useEffect?",
+          "options": [
+            "Return a function from useEffect",
+            "Call useCleanup()",
+            "Use a separate useCleanup hook",
+            "Pass cleanup as second parameter"
+          ],
+          "correctAnswer": 0,
+          "explanation": "To cleanup effects, return a function from useEffect. This function will be called when the component unmounts or before the effect runs again."
+        },
+        {
+          "id": "rh4",
+          "question": "What's the purpose of the dependency array in useEffect?",
+          "options": [
+            "To list all variables used in the effect",
+            "To control when the effect should re-run",
+            "To prevent memory leaks",
+            "To optimize performance only"
+          ],
+          "correctAnswer": 1,
+          "explanation": "The dependency array controls when useEffect re-runs. The effect only re-runs when one of the dependencies changes."
+        },
+        {
+          "id": "rh5",
+          "question": "Which hook would you use to access context in a functional component?",
+          "options": [
+            "useContext",
+            "useProvider",
+            "useConsumer",
+            "useState"
+          ],
+          "correctAnswer": 0,
+          "explanation": "useContext hook allows functional components to consume context values directly."
+        }
+      ]
+    }
+  }
+}

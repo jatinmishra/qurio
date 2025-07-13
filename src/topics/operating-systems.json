@@ -1,0 +1,102 @@
+
+{
+  "id": "operating-systems",
+  "title": "Operating Systems",
+  "description": "Master the fundamentals of operating systems and system programming",
+  "icon": "🖥️",
+  "tags": ["computer-science", "systems", "fundamentals"],
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "os_001",
+          "question": "What is the primary purpose of an operating system?",
+          "options": [
+            "To run applications only",
+            "To manage hardware and software resources",
+            "To provide internet connectivity",
+            "To store data permanently"
+          ],
+          "correctAnswer": 1,
+          "explanation": "An operating system serves as an intermediary between users/applications and computer hardware, managing resources like CPU, memory, storage, and I/O devices."
+        },
+        {
+          "id": "os_002",
+          "question": "Which of the following is NOT a function of an operating system?",
+          "options": [
+            "Process management",
+            "Memory management",
+            "File system management",
+            "Database query optimization"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Database query optimization is handled by database management systems (DBMS), not the operating system. The OS handles process, memory, and file system management."
+        },
+        {
+          "id": "os_003",
+          "question": "What is a process in operating system terminology?",
+          "options": [
+            "A program stored on disk",
+            "A program loaded into memory and executing",
+            "A system call",
+            "A file being accessed"
+          ],
+          "correctAnswer": 1,
+          "explanation": "A process is a program in execution - it's a program that has been loaded into memory and is currently running or ready to run."
+        },
+        {
+          "id": "os_004",
+          "question": "What is the difference between preemptive and non-preemptive scheduling?",
+          "options": [
+            "Preemptive allows OS to interrupt running processes, non-preemptive doesn't",
+            "Non-preemptive is faster than preemptive",
+            "Preemptive uses more memory than non-preemptive",
+            "There is no difference"
+          ],
+          "correctAnswer": 0,
+          "explanation": "In preemptive scheduling, the OS can interrupt and switch between processes. In non-preemptive scheduling, a process runs until it voluntarily gives up the CPU."
+        },
+        {
+          "id": "os_005",
+          "question": "What is virtual memory?",
+          "options": [
+            "Memory that doesn't exist",
+            "A technique that uses disk space to extend available RAM",
+            "Memory used only by virtual machines",
+            "Cache memory in the CPU"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Virtual memory is a memory management technique that uses disk storage to simulate additional RAM, allowing systems to run larger programs than physical memory would otherwise allow."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "os_006",
+          "question": "What is a deadlock in operating systems?",
+          "options": [
+            "When a process takes too long to execute",
+            "When two or more processes are blocked forever, waiting for each other",
+            "When the system runs out of memory",
+            "When a process crashes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Deadlock occurs when two or more processes are blocked indefinitely, each waiting for the other to release resources they need."
+        },
+        {
+          "id": "os_007",
+          "question": "Which conditions must be present for a deadlock to occur? (Coffman conditions)",
+          "options": [
+            "Mutual exclusion, hold and wait, no preemption, circular wait",
+            "Race condition, starvation, priority inversion",
+            "Context switching, interrupt handling, system calls",
+            "Paging, segmentation, fragmentation"
+          ],
+          "correctAnswer": 0,
+          "explanation": "The four Coffman conditions for deadlock are: mutual exclusion, hold and wait, no preemption, and circular wait. All four must be present for deadlock to occur."
+        }
+      ]
+    }
+  }
+}
