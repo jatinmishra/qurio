@@ -77,7 +77,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               </button>
               
               <a
-                href="https://github.com/your-username/qurio"
+                href="https://github.com/jatinmishra/qurio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cyber-button text-lg px-6 py-4 border-secondary text-secondary hover:text-white"
