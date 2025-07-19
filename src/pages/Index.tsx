@@ -9,29 +9,7 @@ import TagFilter from '@/components/TagFilter';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { toast } from 'sonner';
 
-// Import existing topic data
-import javascriptData from '@/topics/javascript.json';
-import reactData from '@/topics/react.json';
-import gitData from '@/topics/git.json';
-import testingData from '@/topics/testing.json';
-import systemDesignData from '@/topics/system-design.json';
-import operatingSystemsData from '@/topics/operating-systems.json';
-import databaseSystemsData from '@/topics/database-systems.json';
-import machineLearningData from '@/topics/machine-learning.json';
-import cloudComputingData from '@/topics/cloud-computing.json';
-import cybersecurityData from '@/topics/cybersecurity.json';
-import softwareArchitectureData from '@/topics/software-architecture.json';
-
-// Import new specific topic data
-import reactHooksData from '@/topics/react-hooks.json';
-import iosUikitData from '@/topics/ios-uikit.json';
-import iosCombineData from '@/topics/ios-combine.json';
-import kotlinCoroutinesData from '@/topics/kotlin-coroutines.json';
-import dockerContainersData from '@/topics/docker-containers.json';
-import kubernetesData from '@/topics/kubernetes.json';
-import graphqlData from '@/topics/graphql.json';
-import nextjsData from '@/topics/nextjs.json';
-import tailwindCssData from '@/topics/tailwindcss.json';
+const topicModules = import.meta.glob('@/topics/*.json', { eager: true });
 
 interface Topic {
   id: string;
@@ -103,29 +81,7 @@ const Index = ({ onGoToLanding }: IndexProps) => {
   };
 
   useEffect(() => {
-    // Load topics from imported JSON data (including new specific topics)
-    const rawTopics = [
-      javascriptData,
-      reactData,
-      reactHooksData,
-      gitData,
-      testingData,
-      systemDesignData,
-      operatingSystemsData,
-      databaseSystemsData,
-      machineLearningData,
-      cloudComputingData,
-      cybersecurityData,
-      softwareArchitectureData,
-      iosUikitData,
-      iosCombineData,
-      kotlinCoroutinesData,
-      dockerContainersData,
-      kubernetesData,
-      graphqlData,
-      nextjsData,
-      tailwindCssData
-    ];
+    const rawTopics = Object.values(topicModules).map((module: any) => module.default);
 
     // Validate and filter topics
     const loadedTopics: Topic[] = rawTopics.filter((topic, index) => {
