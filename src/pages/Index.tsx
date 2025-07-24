@@ -8,6 +8,7 @@ import Progress from '@/components/Progress';
 import TagFilter from '@/components/TagFilter';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { toast } from 'sonner';
+import { ConfirmationDialog } from '@/components/ConfirmationDialog';
 
 const topicModules = import.meta.glob('@/topics/*.json', { eager: true });
 
@@ -35,6 +36,7 @@ interface Question {
 interface TopicProgress {
   currentLevel: number;
   completedQuestions: string[];
+  correctlyAnsweredQuestions: string[];
   score: number;
   totalQuestions: number;
   isLevelCompleted: boolean;
@@ -55,6 +57,8 @@ const Index = ({ onGoToLanding }: IndexProps) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [availableTags, setAvailableTags] = useState<string[]>([]);
   const [showTagFilter, setShowTagFilter] = useState(false);
+  const [showResetDialog, setShowResetDialog] = useState(false);
+  const [topicToReset, setTopicToReset] = useState<Topic | null>(null);
 
   // Validation function for topic structure
   const validateTopic = (topic: any): topic is Topic => {
@@ -81,6 +85,7 @@ const Index = ({ onGoToLanding }: IndexProps) => {
   };
 
   useEffect(() => {
+    // Load topics dynamically from all JSON files in topics directory
     const rawTopics = Object.values(topicModules).map((module: any) => module.default);
 
     // Validate and filter topics
@@ -116,6 +121,7 @@ const Index = ({ onGoToLanding }: IndexProps) => {
           validatedProgress[topic.id] = {
             currentLevel: parsedProgress[topic.id].currentLevel || 1,
             completedQuestions: parsedProgress[topic.id].completedQuestions || [],
+            correctlyAnsweredQuestions: parsedProgress[topic.id].correctlyAnsweredQuestions || [],
             score: parsedProgress[topic.id].score || 0,
             totalQuestions: level1Questions.length,
             isLevelCompleted: parsedProgress[topic.id].isLevelCompleted || false,
@@ -125,6 +131,7 @@ const Index = ({ onGoToLanding }: IndexProps) => {
           validatedProgress[topic.id] = {
             currentLevel: 1,
             completedQuestions: [],
+            correctlyAnsweredQuestions: [],
             score: 0,
             totalQuestions: level1Questions.length,
             isLevelCompleted: false,
@@ -142,6 +149,7 @@ const Index = ({ onGoToLanding }: IndexProps) => {
         initialProgress[topic.id] = {
           currentLevel: 1,
           completedQuestions: [],
+          correctlyAnsweredQuestions: [],
           score: 0,
           totalQuestions: level1Questions.length,
           isLevelCompleted: false,
@@ -191,7 +199,13 @@ const Index = ({ onGoToLanding }: IndexProps) => {
       currentLevelQuestions.some(q => q.id === id)
     ).length;
 
-    if (completedInCurrentLevel === currentLevelQuestions.length) {
+    const correctlyAnsweredInCurrentLevel = progress.correctlyAnsweredQuestions.filter(id => 
+      currentLevelQuestions.some(q => q.id === id)
+    ).length;
+
+    // Only advance to next level if ALL questions in current level are answered correctly
+    if (completedInCurrentLevel === currentLevelQuestions.length && 
+        correctlyAnsweredInCurrentLevel === currentLevelQuestions.length) {
       const nextLevel = progress.currentLevel + 1;
       const nextLevelQuestions = topic.levels[nextLevel.toString()]?.questions || [];
       
@@ -233,6 +247,9 @@ const Index = ({ onGoToLanding }: IndexProps) => {
       }
       
       const newCompletedQuestions = [...currentProgress.completedQuestions, currentQuestion.id];
+      const newCorrectlyAnsweredQuestions = isCorrect 
+        ? [...currentProgress.correctlyAnsweredQuestions, currentQuestion.id]
+        : currentProgress.correctlyAnsweredQuestions;
       const newScore = isCorrect ? currentProgress.score + 1 : currentProgress.score;
       
       const currentLevelQuestions = selectedTopic.levels[currentProgress.currentLevel.toString()]?.questions || [];
@@ -249,6 +266,7 @@ const Index = ({ onGoToLanding }: IndexProps) => {
         [topicId]: {
           ...currentProgress,
           completedQuestions: newCompletedQuestions,
+          correctlyAnsweredQuestions: newCorrectlyAnsweredQuestions,
           score: newScore,
           isLevelCompleted,
           currentLevelQuestionIndex: completedInLevel
@@ -272,12 +290,40 @@ const Index = ({ onGoToLanding }: IndexProps) => {
       currentLevelQuestions.some(q => q.id === id)
     ).length || 0;
 
+    const correctlyAnsweredInLevel = progress?.correctlyAnsweredQuestions.filter(id => 
+      currentLevelQuestions.some(q => q.id === id)
+    ).length || 0;
+
     if (completedInLevel === currentLevelQuestions.length) {
-      const nextQuestion = getNextQuestion(selectedTopic);
-      if (nextQuestion) {
-        setCurrentQuestion(nextQuestion);
+      // All questions in level completed - check if all are correct
+      if (correctlyAnsweredInLevel === currentLevelQuestions.length) {
+        // All correct - try to advance to next level
+        const nextQuestion = getNextQuestion(selectedTopic);
+        if (nextQuestion) {
+          setCurrentQuestion(nextQuestion);
+        } else {
+          toast.success("Outstanding! You've mastered this topic!");
+          setMode('topics');
+          setCurrentQuestionNumber(1);
+        }
       } else {
-        toast.success("Outstanding! You've mastered this topic!");
+        // Not all correct - reset level progress to allow retry
+        setTopicProgress(prev => ({
+          ...prev,
+          [selectedTopic.id]: {
+            ...prev[selectedTopic.id],
+            completedQuestions: prev[selectedTopic.id].completedQuestions.filter(id => 
+              !currentLevelQuestions.some(q => q.id === id)
+            ),
+            correctlyAnsweredQuestions: prev[selectedTopic.id].correctlyAnsweredQuestions.filter(id => 
+              !currentLevelQuestions.some(q => q.id === id)
+            ),
+            isLevelCompleted: false,
+            currentLevelQuestionIndex: 0
+          }
+        }));
+        
+        toast.info(`You need to answer all ${currentLevelQuestions.length} questions correctly to advance. Starting level over!`);
         setMode('topics');
         setCurrentQuestionNumber(1);
       }
@@ -313,6 +359,7 @@ const Index = ({ onGoToLanding }: IndexProps) => {
       initialProgress[topic.id] = {
         currentLevel: 1,
         completedQuestions: [],
+        correctlyAnsweredQuestions: [],
         score: 0,
         totalQuestions: level1Questions.length,
         isLevelCompleted: false,
@@ -593,16 +640,15 @@ const Index = ({ onGoToLanding }: IndexProps) => {
                 icon={<Cog className="w-6 h-6 text-primary" />}
                 onClick={() => {
                   setSelectedTopic(topic);
-                  setMode('quiz');
-                  
-                  setCurrentQuestionNumber(1);
-                  
                   const question = getNextQuestion(topic);
                   if (question) {
                     setCurrentQuestion(question);
+                    setMode('quiz');
+                    setCurrentQuestionNumber(1);
                   } else {
-                    toast.success("Outstanding! You've mastered all available concepts for this topic!");
-                    setMode('topics');
+                    // All levels completed - show custom dialog
+                    setTopicToReset(topic);
+                    setShowResetDialog(true);
                   }
                 }}
               />
@@ -641,6 +687,45 @@ const Index = ({ onGoToLanding }: IndexProps) => {
           </div>
         )}
       </main>
+      
+      <ConfirmationDialog
+        open={showResetDialog}
+        onOpenChange={setShowResetDialog}
+        title="Quiz Complete!"
+        description={`You've completed all levels for this topic!\n\nDo you want to start over? This will reset all your progress for this topic.`}
+        confirmText="Reset Progress"
+        cancelText="Cancel"
+        onConfirm={() => {
+          if (topicToReset) {
+            // Reset progress for this topic
+            setTopicProgress(prev => ({
+              ...prev,
+              [topicToReset.id]: {
+                completedQuestions: [],
+                correctlyAnsweredQuestions: [],
+                currentLevel: 1,
+                score: 0,
+                totalQuestions: topicToReset.levels['1']?.questions?.length || 0,
+                isLevelCompleted: false,
+                currentLevelQuestionIndex: 0
+              }
+            }));
+            
+            // Start the quiz from the beginning
+            const firstQuestionAfterReset = getNextQuestion(topicToReset);
+            if (firstQuestionAfterReset) {
+              setCurrentQuestion(firstQuestionAfterReset);
+              setMode('quiz');
+              setCurrentQuestionNumber(1);
+              toast.success("Progress reset! Starting from level 1.");
+            }
+            setTopicToReset(null);
+          }
+        }}
+        onCancel={() => {
+          setTopicToReset(null);
+        }}
+      />
     </div>
   );
 };
