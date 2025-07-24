@@ -1,6 +1,6 @@
-# Qurio
+# <img width="28" height="28" alt="logo" src="https://github.com/user-attachments/assets/31fc4b4a-f139-43a4-99aa-885e12df5ea0" /> Qurio
 
-An interactive, topic-based quiz platform built with **React**, **TypeScript**, and **Vite**. It’s designed to help developers improve their knowledge across a variety of engineering topics — from React and JavaScript to Docker, iOS, and system design.
+An interactive, topic-based quiz platform built with **React**, **TypeScript**, and **Vite**. It’s designed to help developers improve their knowledge across a variety of engineering topics.
 
 ---
 
@@ -9,8 +9,6 @@ An interactive, topic-based quiz platform built with **React**, **TypeScript**, 
 - 📚 JSON-based topic structure (easy to extend)
 - 🧠 Instant feedback with detailed explanations
 - 🔁 Question levels for progressive learning
-- ⚡ Lightning-fast dev setup with Vite
-- 🧩 Clean and componentized React architecture
 
 ---
 
@@ -20,7 +18,6 @@ Before running the project, ensure you have the following installed:
 
 - **Node.js** — v18 or higher recommended  
 - **npm** — v9 or higher recommended  
-- **Git** — for version control
 
 ---
 
@@ -29,8 +26,8 @@ Before running the project, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/code-matrix-quiz.git
-cd code-matrix-quiz
+git clone https://github.com/jatinmishra/qurio.git
+cd qurio
 ````
 
 ### 2. Install Dependencies
@@ -45,7 +42,9 @@ npm install
 npm run dev
 ```
 
-Open your browser and visit: [http://localhost:5173](http://localhost:5173)
+Open your browser and visit: [http://localhost:8080/qurio](http://localhost:8080/qurio) (or the URL displayed on the terminal)
+<img width="697" height="483" alt="image" src="https://github.com/user-attachments/assets/9f8ea6bd-0e3c-43c4-8b48-5dfe5cb7668b" />
+
 
 ---
 
@@ -82,7 +81,10 @@ Use the structure below:
   "description": "Strongly typed JavaScript at any scale.",
   "icon": "🟦",
   "tags": ["typescript", "javascript", "frontend"],
-  "author": "yourname",
+  "author": {
+    "username": "username",
+    "github": "https://github.com/username"
+  },
   "levels": {
     "1": {
       "questions": [
