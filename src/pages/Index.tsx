@@ -1,172 +1,40 @@
 
-import { useState, useEffect } from 'react';
-import { Trophy, Target, Cog, Zap, RotateCcw, Filter, X, Github, Home } from 'lucide-react';
+import { useState } from 'react';
+import { Trophy, Cog, RotateCcw, Filter, X, Github, Home } from 'lucide-react';
 import TopicCard from '@/components/TopicCard';
 import QuizCard from '@/components/QuizCard';
-import Flashcard from '@/components/Flashcard';
 import Progress from '@/components/Progress';
 import TagFilter from '@/components/TagFilter';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { toast } from 'sonner';
 import { ConfirmationDialog } from '@/components/ConfirmationDialog';
-
-const topicModules = import.meta.glob('@/topics/*.json', { eager: true });
-
-interface Topic {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  tags?: string[];
-  author?: {
-    username: string;
-    github: string;
-  };
-  levels: Record<string, { questions: Question[] }>;
-}
-
-interface Question {
-  id: string;
-  question: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
-}
-
-interface TopicProgress {
-  currentLevel: number;
-  completedQuestions: string[];
-  correctlyAnsweredQuestions: string[];
-  score: number;
-  totalQuestions: number;
-  isLevelCompleted: boolean;
-  currentLevelQuestionIndex: number;
-}
+import { useTopics, Topic } from '@/hooks/useTopics';
+import { useTopicProgress } from '@/hooks/useTopicProgress';
+import { useQuizLogic } from '@/hooks/useQuizLogic';
 
 interface IndexProps {
   onGoToLanding: () => void;
 }
 
 const Index = ({ onGoToLanding }: IndexProps) => {
-  const [topics, setTopics] = useState<Topic[]>([]);
+  const { topics, availableTags } = useTopics();
+  const { topicProgress, setTopicProgress, resetAllProgress } = useTopicProgress(topics);
+  const {
+    currentQuestion,
+    setCurrentQuestion,
+    currentQuestionNumber,
+    setCurrentQuestionNumber,
+    getNextQuestion,
+    handleQuizAnswer,
+    handleQuizNext
+  } = useQuizLogic(topicProgress, setTopicProgress);
+
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
-  const [currentQuestionNumber, setCurrentQuestionNumber] = useState<number>(1);
-  const [mode, setMode] = useState<'topics' | 'quiz' | 'flashcard' | 'progress'>('topics');
-  const [topicProgress, setTopicProgress] = useState<Record<string, TopicProgress>>({});
+  const [mode, setMode] = useState<'topics' | 'quiz' | 'progress'>('topics');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [availableTags, setAvailableTags] = useState<string[]>([]);
   const [showTagFilter, setShowTagFilter] = useState(false);
   const [showResetDialog, setShowResetDialog] = useState(false);
   const [topicToReset, setTopicToReset] = useState<Topic | null>(null);
-
-  // Validation function for topic structure
-  const validateTopic = (topic: any): topic is Topic => {
-    if (!topic || typeof topic !== 'object') return false;
-    if (!topic.id || !topic.title || !topic.description || !topic.levels) return false;
-    if (typeof topic.levels !== 'object') return false;
-    
-    // Validate each level has questions array
-    for (const level of Object.values(topic.levels)) {
-      if (!level || typeof level !== 'object' || !Array.isArray((level as any).questions)) {
-        return false;
-      }
-      
-      // Validate each question structure
-      for (const question of (level as any).questions) {
-        if (!question.id || !question.question || !Array.isArray(question.options) || 
-            typeof question.correctAnswer !== 'number' || !question.explanation) {
-          return false;
-        }
-      }
-    }
-    
-    return true;
-  };
-
-  useEffect(() => {
-    // Load topics dynamically from all JSON files in topics directory
-    const rawTopics = Object.values(topicModules).map((module: any) => module.default);
-
-    // Validate and filter topics
-    const loadedTopics: Topic[] = rawTopics.filter((topic, index) => {
-      const isValid = validateTopic(topic);
-      if (!isValid) {
-        console.warn(`Invalid topic structure at index ${index}:`, topic);
-        toast.error(`Topic "${topic?.title || 'Unknown'}" has invalid structure and was skipped`);
-      }
-      return isValid;
-    });
-
-    setTopics(loadedTopics);
-
-    // Extract all unique tags from all topics
-    const allTags = new Set<string>();
-    loadedTopics.forEach(topic => {
-      if (topic.tags) {
-        topic.tags.forEach(tag => allTags.add(tag));
-      }
-    });
-    setAvailableTags(Array.from(allTags).sort());
-
-    // Load progress from localStorage
-    const savedProgress = localStorage.getItem('topicProgress');
-    if (savedProgress) {
-      const parsedProgress = JSON.parse(savedProgress);
-      
-      const validatedProgress: Record<string, TopicProgress> = {};
-      loadedTopics.forEach(topic => {
-        const level1Questions = topic.levels['1']?.questions || [];
-        if (parsedProgress[topic.id]) {
-          validatedProgress[topic.id] = {
-            currentLevel: parsedProgress[topic.id].currentLevel || 1,
-            completedQuestions: parsedProgress[topic.id].completedQuestions || [],
-            correctlyAnsweredQuestions: parsedProgress[topic.id].correctlyAnsweredQuestions || [],
-            score: parsedProgress[topic.id].score || 0,
-            totalQuestions: level1Questions.length,
-            isLevelCompleted: parsedProgress[topic.id].isLevelCompleted || false,
-            currentLevelQuestionIndex: parsedProgress[topic.id].currentLevelQuestionIndex || 0
-          };
-        } else {
-          validatedProgress[topic.id] = {
-            currentLevel: 1,
-            completedQuestions: [],
-            correctlyAnsweredQuestions: [],
-            score: 0,
-            totalQuestions: level1Questions.length,
-            isLevelCompleted: false,
-            currentLevelQuestionIndex: 0
-          };
-        }
-      });
-      
-      setTopicProgress(validatedProgress);
-      localStorage.setItem('topicProgress', JSON.stringify(validatedProgress));
-    } else {
-      const initialProgress: Record<string, TopicProgress> = {};
-      loadedTopics.forEach(topic => {
-        const level1Questions = topic.levels['1']?.questions || [];
-        initialProgress[topic.id] = {
-          currentLevel: 1,
-          completedQuestions: [],
-          correctlyAnsweredQuestions: [],
-          score: 0,
-          totalQuestions: level1Questions.length,
-          isLevelCompleted: false,
-          currentLevelQuestionIndex: 0
-        };
-      });
-      setTopicProgress(initialProgress);
-      localStorage.setItem('topicProgress', JSON.stringify(initialProgress));
-    }
-  }, []);
-
-  // Save progress whenever it changes
-  useEffect(() => {
-    if (Object.keys(topicProgress).length > 0) {
-      localStorage.setItem('topicProgress', JSON.stringify(topicProgress));
-    }
-  }, [topicProgress]);
 
   const getFilteredTopics = (): Topic[] => {
     if (selectedTags.length === 0) {
@@ -178,196 +46,8 @@ const Index = ({ onGoToLanding }: IndexProps) => {
     );
   };
 
-  const getNextQuestion = (topic: Topic): Question | null => {
-    const progress = topicProgress[topic.id];
-    if (!progress) {
-      const level1Questions = topic.levels['1']?.questions || [];
-      return level1Questions[0] || null;
-    }
-
-    const currentLevelQuestions = topic.levels[progress.currentLevel.toString()]?.questions || [];
-    
-    const availableQuestions = currentLevelQuestions.filter(q => 
-      !progress.completedQuestions.includes(q.id)
-    );
-
-    if (availableQuestions.length > 0) {
-      return availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
-    }
-
-    const completedInCurrentLevel = progress.completedQuestions.filter(id => 
-      currentLevelQuestions.some(q => q.id === id)
-    ).length;
-
-    const correctlyAnsweredInCurrentLevel = progress.correctlyAnsweredQuestions.filter(id => 
-      currentLevelQuestions.some(q => q.id === id)
-    ).length;
-
-    // Only advance to next level if ALL questions in current level are answered correctly
-    if (completedInCurrentLevel === currentLevelQuestions.length && 
-        correctlyAnsweredInCurrentLevel === currentLevelQuestions.length) {
-      const nextLevel = progress.currentLevel + 1;
-      const nextLevelQuestions = topic.levels[nextLevel.toString()]?.questions || [];
-      
-      if (nextLevelQuestions.length > 0) {
-        setTopicProgress(prev => ({
-          ...prev,
-          [topic.id]: {
-            ...prev[topic.id],
-            currentLevel: nextLevel,
-            isLevelCompleted: false,
-            totalQuestions: nextLevelQuestions.length,
-            currentLevelQuestionIndex: 0
-          }
-        }));
-        
-        toast.success(`Congratulations! Advanced to Level ${nextLevel}!`);
-        setCurrentQuestionNumber(1);
-        return nextLevelQuestions[0];
-      }
-    }
-
-    return null;
-  };
-
-  const handleQuizAnswer = (isCorrect: boolean) => {
-    if (!selectedTopic || !currentQuestion) return;
-    
-    setTopicProgress(prev => {
-      const topicId = selectedTopic.id;
-      const currentProgress = prev[topicId];
-      
-      if (!currentProgress) {
-        console.error(`No progress found for topic: ${topicId}`);
-        return prev;
-      }
-      
-      if (currentProgress.completedQuestions.includes(currentQuestion.id)) {
-        return prev;
-      }
-      
-      const newCompletedQuestions = [...currentProgress.completedQuestions, currentQuestion.id];
-      const newCorrectlyAnsweredQuestions = isCorrect 
-        ? [...currentProgress.correctlyAnsweredQuestions, currentQuestion.id]
-        : currentProgress.correctlyAnsweredQuestions;
-      const newScore = isCorrect ? currentProgress.score + 1 : currentProgress.score;
-      
-      const currentLevelQuestions = selectedTopic.levels[currentProgress.currentLevel.toString()]?.questions || [];
-      const completedInLevel = newCompletedQuestions.filter(id => 
-        currentLevelQuestions.some(q => q.id === id)
-      ).length;
-      
-      const isLevelCompleted = completedInLevel === currentLevelQuestions.length;
-      
-      console.log(`Topic: ${topicId}, Completed: ${newCompletedQuestions.length}, Correct: ${newScore}`);
-      
-      return {
-        ...prev,
-        [topicId]: {
-          ...currentProgress,
-          completedQuestions: newCompletedQuestions,
-          correctlyAnsweredQuestions: newCorrectlyAnsweredQuestions,
-          score: newScore,
-          isLevelCompleted,
-          currentLevelQuestionIndex: completedInLevel
-        }
-      };
-    });
-    
-    if (isCorrect) {
-      toast.success("Excellent! You've got this right!");
-    } else {
-      toast.error("Not quite right. Review and try again!");
-    }
-  };
-
-  const handleQuizNext = () => {
-    if (!selectedTopic) return;
-    
-    const progress = topicProgress[selectedTopic.id];
-    const currentLevelQuestions = selectedTopic.levels[progress?.currentLevel?.toString()]?.questions || [];
-    const completedInLevel = progress?.completedQuestions.filter(id => 
-      currentLevelQuestions.some(q => q.id === id)
-    ).length || 0;
-
-    const correctlyAnsweredInLevel = progress?.correctlyAnsweredQuestions.filter(id => 
-      currentLevelQuestions.some(q => q.id === id)
-    ).length || 0;
-
-    if (completedInLevel === currentLevelQuestions.length) {
-      // All questions in level completed - check if all are correct
-      if (correctlyAnsweredInLevel === currentLevelQuestions.length) {
-        // All correct - try to advance to next level
-        const nextQuestion = getNextQuestion(selectedTopic);
-        if (nextQuestion) {
-          setCurrentQuestion(nextQuestion);
-        } else {
-          toast.success("Outstanding! You've mastered this topic!");
-          setMode('topics');
-          setCurrentQuestionNumber(1);
-        }
-      } else {
-        // Not all correct - reset level progress to allow retry
-        setTopicProgress(prev => ({
-          ...prev,
-          [selectedTopic.id]: {
-            ...prev[selectedTopic.id],
-            completedQuestions: prev[selectedTopic.id].completedQuestions.filter(id => 
-              !currentLevelQuestions.some(q => q.id === id)
-            ),
-            correctlyAnsweredQuestions: prev[selectedTopic.id].correctlyAnsweredQuestions.filter(id => 
-              !currentLevelQuestions.some(q => q.id === id)
-            ),
-            isLevelCompleted: false,
-            currentLevelQuestionIndex: 0
-          }
-        }));
-        
-        toast.info(`You need to answer all ${currentLevelQuestions.length} questions correctly to advance. Starting level over!`);
-        setMode('topics');
-        setCurrentQuestionNumber(1);
-      }
-    } else {
-      const nextQuestion = getNextQuestion(selectedTopic);
-      if (nextQuestion) {
-        setCurrentQuestion(nextQuestion);
-        setCurrentQuestionNumber(prev => Math.min(prev + 1, currentLevelQuestions.length));
-      } else {
-        setMode('topics');
-        setCurrentQuestionNumber(1);
-      }
-    }
-  };
-
-  const handleFlashcardNext = () => {
-    if (!selectedTopic) return;
-    
-    const nextQuestion = getNextQuestion(selectedTopic);
-    if (nextQuestion) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      setMode('topics');
-    }
-  };
-
   const resetProgress = () => {
-    localStorage.removeItem('topicProgress');
-    
-    const initialProgress: Record<string, TopicProgress> = {};
-    topics.forEach(topic => {
-      const level1Questions = topic.levels['1']?.questions || [];
-      initialProgress[topic.id] = {
-        currentLevel: 1,
-        completedQuestions: [],
-        correctlyAnsweredQuestions: [],
-        score: 0,
-        totalQuestions: level1Questions.length,
-        isLevelCompleted: false,
-        currentLevelQuestionIndex: 0
-      };
-    });
-    
-    setTopicProgress(initialProgress);
+    resetAllProgress();
     setSelectedTopic(null);
     setCurrentQuestion(null);
     setCurrentQuestionNumber(1);
@@ -405,8 +85,8 @@ const Index = ({ onGoToLanding }: IndexProps) => {
               correctAnswer: currentQuestion.correctAnswer,
               explanation: currentQuestion.explanation
             }}
-            onAnswer={handleQuizAnswer}
-            onNext={handleQuizNext}
+            onAnswer={(isCorrect) => handleQuizAnswer(selectedTopic, isCorrect)}
+            onNext={() => handleQuizNext(selectedTopic, () => setMode('topics'))}
             onBack={() => {
               setMode('topics');
               setCurrentQuestionNumber(1);
@@ -438,22 +118,6 @@ const Index = ({ onGoToLanding }: IndexProps) => {
     );
   }
 
-  if (mode === 'flashcard' && selectedTopic && currentQuestion) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4">
-        <Flashcard
-          question={currentQuestion}
-          onNext={handleFlashcardNext}
-          onPrevious={() => {}}
-          onBack={() => setMode('topics')}
-          cardNumber={1}
-          totalCards={selectedTopic.levels[topicProgress[selectedTopic.id]?.currentLevel?.toString()]?.questions?.length || 0}
-          canGoNext={true}
-          canGoPrevious={false}
-        />
-      </div>
-    );
-  }
 
   if (mode === 'progress') {
     const allCompletedQuestions = Object.values(topicProgress).reduce(
