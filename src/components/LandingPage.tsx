@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Terminal, ArrowRight, Code, Users, BookOpen, GitPullRequest, Upload, CheckCircle, Github, Linkedin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-interface LandingPageProps {
-  onGetStarted: () => void;
-}
-
-const LandingPage = ({ onGetStarted }: LandingPageProps) => {
+const LandingPage = () => {
+  const navigate = useNavigate();
   const [typedText, setTypedText] = useState('');
   const fullText = 'Evaluate and sharpen your engineering knowledge';
 
@@ -56,26 +54,26 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               <span className="animate-pulse">|</span>
             </p>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed mb-6">
-              Qurio is a platform where engineers explore and test their knowledge through community-powered quizzes. 
+              Qurio is a platform where engineers explore and test their knowledge through community-powered quizzes.
               Whether you're brushing up on concepts or just curious about how deep your skills go—you're in the right place.
             </p>
-            
+
             <p className="text-md text-gray-400 max-w-xl mx-auto leading-relaxed mb-8">
-              <strong className="text-primary">Open source</strong> and completely free. 
+              <strong className="text-primary">Open source</strong> and completely free.
               Built for the engineering community to share knowledge and evaluate skills together.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <button 
+              <button
                 className="cyber-button text-lg px-8 py-4 animate-glow-pulse"
-                onClick={onGetStarted}
+                onClick={() => navigate('/topics')}
               >
                 <span className="flex items-center">
                   Start Evaluating Your Knowledge
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </span>
               </button>
-              
+
               <a
                 href="https://github.com/jatinmishra/qurio"
                 target="_blank"
@@ -117,7 +115,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           <h2 className="text-2xl sm:text-3xl font-cyber font-bold text-white mb-8">
             How It Works
           </h2>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
@@ -151,7 +149,7 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
           <h2 className="text-2xl sm:text-3xl font-cyber font-bold text-white mb-8">
             Engineering Topics Available
           </h2>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
             {['JavaScript', 'React', 'System Design', 'Git', 'Testing', 'Machine Learning', 'Cloud Computing', 'Cybersecurity', 'Database Systems', 'Operating Systems', 'Software Architecture', 'And More...'].map((topic) => (
               <div key={topic} className="cyber-card py-3">
@@ -159,9 +157,9 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               </div>
             ))}
           </div>
-          
+
           <p className="text-gray-400 max-w-xl mx-auto">
-            Each topic contains community-contributed questions designed to challenge 
+            Each topic contains community-contributed questions designed to challenge
             and evaluate your engineering knowledge. No fluff, just solid technical assessment.
           </p>
         </div>
@@ -183,14 +181,14 @@ const LandingPage = ({ onGetStarted }: LandingPageProps) => {
               <div>
                 <h4 className="text-white font-semibold mb-2">For Question Creators:</h4>
                 <p className="text-gray-400 text-sm">
-                  Upload your JSON question files via GitHub pull requests. 
+                  Upload your JSON question files via GitHub pull requests.
                   Share your expertise and help others evaluate their knowledge in areas you've mastered.
                 </p>
               </div>
               <div>
                 <h4 className="text-white font-semibold mb-2">For Knowledge Seekers:</h4>
                 <p className="text-gray-400 text-sm">
-                  Access high-quality, engineer-vetted questions across multiple topics. 
+                  Access high-quality, engineer-vetted questions across multiple topics.
                   Test your skills, identify gaps, and improve your technical understanding.
                 </p>
               </div>

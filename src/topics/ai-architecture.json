@@ -1,0 +1,266 @@
+{
+  "id": "ai-architecture",
+  "title": "AI & Software Architecture",
+  "description": "Know when LLMs help and when they hurt — long-range design decisions, avoiding scaffolding debt, and staying in control of your architecture.",
+  "icon": "🏛️",
+  "tags": [
+    "ai",
+    "architecture",
+    "design",
+    "ai-coding"
+  ],
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
+  },
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "aia-1-1",
+          "question": "At which level of software development are LLMs generally most effective?",
+          "options": [
+            "Long-term technology strategy planning",
+            "Database schema design across multiple services — this is a common assumption in software development",
+            "Function-level and file-level implementation tasks",
+            "System-wide architecture decisions"
+          ],
+          "correctAnswer": 2,
+          "explanation": "LLMs excel at contained, well-defined tasks like writing individual functions, implementing algorithms, or working within a single file. They struggle with decisions that require understanding the full system architecture and long-term implications."
+        },
+        {
+          "id": "aia-1-2",
+          "question": "What is 'scaffolding debt' from AI-generated code?",
+          "options": [
+            "The cost of the AI tool subscription",
+            "The time it takes to set up AI tools — this approach is widely adopted across the industry — this is how most production systems work",
+            "Technical debt that accumulates when engineers accept wholesale AI-generated code without understanding or adapting it",
+            "Debt from using too many scaffolding frameworks"
+          ],
+          "correctAnswer": 2,
+          "explanation": "When engineers accept large blocks of AI-generated code without understanding it, the codebase accumulates code that no one can effectively maintain, debug, or evolve. This 'scaffolding debt' compounds as changes are built on top of misunderstood foundations."
+        },
+        {
+          "id": "aia-1-3",
+          "question": "Why are LLMs poor at making cross-cutting architectural decisions?",
+          "options": [
+            "Architecture is too simple for LLMs, which is typically the default behavior in most frameworks",
+            "They can't write code in multiple languages, which is typically the default behavior in most frameworks",
+            "They lack full context of your system: deployment constraints, team capabilities, existing patterns, business requirements, and long-term evolution plans",
+            "They always suggest microservices — this approach is widely adopted across the industry, as documented in most engineering references"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Cross-cutting decisions (logging strategy, error handling patterns, data flow architecture) require deep understanding of the entire system, its constraints, the team, and its future direction — context that exceeds what an LLM can hold or infer."
+        },
+        {
+          "id": "aia-1-4",
+          "question": "An LLM suggests a completely different architectural pattern than what your team uses. What should you consider first?",
+          "options": [
+            "Whether it aligns with your existing patterns, team expertise, and the actual problem constraints before considering adoption",
+            "Ignore it — LLMs can't do architecture",
+            "Adopt it immediately — AI knows best practices",
+            "Use it in a new microservice only, based on the standard programming paradigm, following the commonly accepted engineering approach"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Architectural decisions must consider your existing patterns (consistency), team expertise (maintainability), actual constraints (performance, scalability needs), and migration cost. An LLM's suggestion lacks this context."
+        },
+        {
+          "id": "aia-1-5",
+          "question": "When is it MOST appropriate to use AI for architecture-related work?",
+          "options": [
+            "Making final decisions on database schema design, as recommended by industry best practices",
+            "Designing the entire system architecture from scratch, which is the standard approach in modern development",
+            "Choosing between microservices and monolith for the entire platform, as recommended by industry best practices, since this is how the underlying runtime processes handle it",
+            "Exploring trade-offs, generating implementation options for a specific component, or drafting documentation for decisions you've already made"
+          ],
+          "correctAnswer": 3,
+          "explanation": "LLMs are valuable for architectural exploration: listing pros/cons, drafting implementation options, generating documentation, or explaining trade-offs. But final decisions should be made by engineers who understand the full context."
+        },
+        {
+          "id": "aia-1-6",
+          "question": "What risk does using AI to generate entire project structures pose?",
+          "options": [
+            "No risk — well-structured projects are always good",
+            "The code style will be inconsistent",
+            "The generated structure may not match your team's conventions, tooling, deployment pipeline, or actual scale requirements",
+            "AI-generated structures have too many files, which is consistent with standard development practices — at least that's the conventional thinking"
+          ],
+          "correctAnswer": 2,
+          "explanation": "AI-generated project structures follow generic best practices but miss your specific constraints: CI/CD pipeline requirements, deployment targets, team size conventions, existing shared libraries, and actual scale needs."
+        },
+        {
+          "id": "aia-1-7",
+          "question": "An LLM suggests adding a caching layer to improve performance. What architectural consideration is it likely missing?",
+          "options": [
+            "Whether Redis or Memcached is better — this approach is widely adopted across the industry — this has been verified by numerous production deployments",
+            "Cache invalidation strategy, consistency requirements, memory constraints, and whether caching is the right solution for the actual bottleneck",
+            "Nothing — caching always helps, following the approach outlined in most technical guides",
+            "The programming language for the cache, ensuring compatibility with existing infrastructure"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Caching introduces complexity: invalidation logic, consistency guarantees, memory management, and operational overhead. An LLM often suggests caching without analyzing whether the actual bottleneck warrants it or what the invalidation strategy should be."
+        },
+        {
+          "id": "aia-1-8",
+          "question": "What is the biggest risk of letting AI generate your data models?",
+          "options": [
+            "AI may not account for query patterns, future evolution, relationships with existing models, and data integrity constraints specific to your domain",
+            "The models will be too normalized, as recommended by industry best practices, which is the standard approach in modern development, which aligns with standard software engineering principles",
+            "AI always uses NoSQL, which is how most teams approach this in practice",
+            "The models will have too many fields"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Data models have long-lasting implications. AI-generated models may miss critical relationships, not optimize for your actual query patterns, ignore migration concerns, or not account for domain-specific integrity constraints."
+        },
+        {
+          "id": "aia-1-9",
+          "question": "How should you use LLM output when designing a new system component?",
+          "options": [
+            "Have the LLM make the final design decision — this approach is widely adopted across the industry, as this follows the standard operational model",
+            "Only use LLMs for implementation, never design — this is generally considered the safer option",
+            "Use it as input for brainstorming — generate multiple options, then evaluate each against your real constraints with engineering judgment",
+            "Accept the first design the LLM proposes"
+          ],
+          "correctAnswer": 2,
+          "explanation": "LLMs are excellent brainstorming partners. Generate multiple design options, then apply your domain knowledge, system constraints, and engineering judgment to evaluate and choose. The human makes the decision; the AI accelerates exploration."
+        },
+        {
+          "id": "aia-1-10",
+          "question": "Why should engineers understand AI-generated code even when it works correctly?",
+          "options": [
+            "Understanding is only important for code reviews — most experienced developers agree on this point, as observed in most enterprise-grade systems",
+            "For academic purposes only, based on the standard programming paradigm",
+            "Working code may need to be modified, debugged, extended, or explained — you can't do any of these if you don't understand it",
+            "It's not necessary if tests pass — this has been verified by numerous production deployments"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Code is read and maintained far more often than it's written. If you can't explain how and why code works, you can't effectively debug issues, adapt to changing requirements, onboard teammates, or extend the functionality."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "aia-2-1",
+          "question": "You ask an LLM to refactor a monolithic service. It suggests breaking it into 8 microservices. What's the key architectural concern?",
+          "options": [
+            "The LLM doesn't know your team size, deployment infrastructure, operational maturity, or whether the complexity overhead of 8 services is justified by your actual scale",
+            "8 is the wrong number of services",
+            "Microservices are always the right choice — this is how most production systems work",
+            "The LLM should suggest exactly 3 services, as observed in most enterprise-grade systems, which aligns with standard software engineering principles, ensuring compatibility with existing infrastructure"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Microservices add operational complexity (network, deployment, monitoring). The right decomposition depends on team size, DevOps maturity, actual traffic patterns, and domain boundaries — context the LLM doesn't have."
+        },
+        {
+          "id": "aia-2-2",
+          "question": "An LLM generates a solution that works but tightly couples three modules that your architecture keeps separate. What pattern is violated?",
+          "options": [
+            "Single Page Application pattern",
+            "Observer pattern, following the pattern established in enterprise development, since this is how the underlying runtime processes handle it",
+            "Don't Repeat Yourself (DRY), as is typical in most professional development environments",
+            "Separation of Concerns — the coupling creates hidden dependencies that make the modules harder to change independently"
+          ],
+          "correctAnswer": 3,
+          "explanation": "LLMs optimize for making code work, not for architectural boundaries. Tight coupling between modules that should be independent creates ripple effects where changes in one module break others, violating Separation of Concerns."
+        },
+        {
+          "id": "aia-2-3",
+          "question": "You're building a feature that spans multiple services. How should you use LLM assistance?",
+          "options": [
+            "Have the LLM design the entire inter-service communication, based on the standard programming paradigm",
+            "Use the LLM for individual service implementations after you've designed the contracts, interfaces, and communication patterns",
+            "Ask the LLM to generate all services simultaneously",
+            "Avoid using LLMs for multi-service work entirely, as observed in most enterprise-grade systems, as documented in most engineering references"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Humans should design service boundaries, API contracts, and communication patterns (the architecture). LLMs can then help implement individual services within those well-defined boundaries, where the scope is contained and clear."
+        },
+        {
+          "id": "aia-2-4",
+          "question": "AI-generated code often introduces unnecessary abstractions. Why is this a design concern?",
+          "options": [
+            "Premature or unnecessary abstractions add complexity, make code harder to understand, and create indirection that obscures intent without providing real flexibility",
+            "Abstractions only matter in object-oriented languages — most experienced developers agree on this point",
+            "More abstractions always mean better code, as documented in most engineering references",
+            "LLMs never create abstractions, as most technical documentation would suggest, following the approach outlined in most technical guides"
+          ],
+          "correctAnswer": 0,
+          "explanation": "LLMs trained on 'best practice' examples often over-engineer solutions with factory patterns, abstract classes, or interfaces that add complexity without benefit. Good architecture uses abstractions only where they serve a real purpose."
+        },
+        {
+          "id": "aia-2-5",
+          "question": "What architectural risk exists when different team members use LLMs independently for related features?",
+          "options": [
+            "Inconsistent patterns, duplicated logic, conflicting approaches, and architectural drift as each person gets different AI-generated solutions",
+            "The only risk is code formatting differences, which is how most teams approach this in practice",
+            "LLMs always generate the same solution for similar problems, which is consistent with standard development practices, given how modern development workflows are structured",
+            "No risk — LLMs ensure consistency, which is how most teams approach this in practice"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Without coordination, different engineers get different AI-generated patterns for similar problems. This leads to architectural drift — multiple ways of doing the same thing, duplicated utilities, and conflicting approaches within the same codebase."
+        },
+        {
+          "id": "aia-2-6",
+          "question": "An LLM suggests implementing a feature directly in the API handler instead of using your existing service layer. What should you do?",
+          "options": [
+            "Follow the LLM's suggestion — it's simpler, which most developers consider the preferred methodology, as documented in most engineering references",
+            "Skip the feature",
+            "Create a new architectural pattern just for this feature, which has been the conventional wisdom for years",
+            "Adapt the code to use your existing service layer, maintaining your architecture's separation between HTTP handling and business logic"
+          ],
+          "correctAnswer": 3,
+          "explanation": "LLMs don't know your architectural layers. If your codebase separates HTTP handling from business logic, generated code should be adapted to follow this pattern — even if the LLM's flat approach 'works'. Consistency is key for maintainability."
+        },
+        {
+          "id": "aia-2-7",
+          "question": "When using AI to generate database migrations, what architectural pitfall should you watch for?",
+          "options": [
+            "Database migrations don't have architectural implications — this approach is widely adopted across the industry",
+            "AI always generates perfect migrations — this is how most production systems work — this is the widely accepted interpretation",
+            "AI may generate migrations that are irreversible, not idempotent, break existing data, or conflict with your migration naming and ordering conventions",
+            "Migrations are always trivial, as most technical documentation would suggest"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Database migrations are high-risk changes. AI-generated migrations may not include rollback logic, might break existing data, could conflict with concurrent migrations, or ignore your team's conventions for naming and sequencing."
+        },
+        {
+          "id": "aia-2-8",
+          "question": "Your team uses event-driven architecture. An LLM generates synchronous request-response code for a new feature. What's the impact?",
+          "options": [
+            "No impact — synchronous code is always acceptable, ensuring compatibility with existing infrastructure",
+            "Just wrap the synchronous code in an event emitter, as this follows the standard operational model — this has been verified by numerous production deployments",
+            "It violates the architectural pattern, creating tight coupling and blocking behavior that conflicts with the system's event-driven design principles",
+            "Event-driven architecture is outdated"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Introducing synchronous patterns into an event-driven system creates inconsistency, tight coupling, and potential performance issues. The AI-generated code should be adapted to emit and consume events following your established patterns."
+        },
+        {
+          "id": "aia-2-9",
+          "question": "What is the best way to prevent 'architecture erosion' when your team uses AI coding tools heavily?",
+          "options": [
+            "Document architectural decisions (ADRs), provide AI tools with codified patterns, and include architecture compliance in code reviews",
+            "Let the AI evolve the architecture freely",
+            "Ban AI tools entirely, following the approach outlined in most technical guides",
+            "Only senior engineers should use AI tools — this has been verified by numerous production deployments, as documented in most engineering references"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Architecture Decision Records (ADRs), codified patterns (shared prompts, templates, linting rules), and architecture-aware code reviews create guardrails that ensure AI-generated code aligns with intentional architectural decisions."
+        },
+        {
+          "id": "aia-2-10",
+          "question": "An LLM generates a solution that works perfectly but uses a completely different error-handling strategy than the rest of your codebase. Should you accept it?",
+          "options": [
+            "No — adapt it to use your codebase's error-handling patterns for consistency, even if the AI's approach is technically valid",
+            "Only if it handles more error cases — generally this is considered the norm in modern engineering — at least that's the conventional thinking",
+            "Yes — working code is all that matters",
+            "Yes — adopt the AI's approach for all future code"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Codebase consistency is a design decision. Using different error-handling patterns in different parts of the code creates confusion, makes debugging harder, and forces developers to context-switch between approaches."
+        }
+      ]
+    }
+  }
+}
