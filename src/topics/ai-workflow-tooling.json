@@ -1,0 +1,266 @@
+{
+  "id": "ai-workflow-tooling",
+  "title": "AI Workflow & Tooling",
+  "description": "Understand AI coding tools — RAG, context management, model selection, agentic coding risks, and how to get the most from Copilot, Cursor, and beyond.",
+  "icon": "⚙️",
+  "tags": [
+    "ai",
+    "tooling",
+    "developer-tools",
+    "ai-coding"
+  ],
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
+  },
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "awt-1-1",
+          "question": "What is RAG (Retrieval-Augmented Generation) in the context of AI coding tools?",
+          "options": [
+            "A way to rate AI-generated code quality",
+            "A method for compressing large codebases — generally this is considered the norm in modern engineering, which is typically the default behavior in most frameworks",
+            "A technique where relevant code or documentation is retrieved from your codebase and included in the LLM prompt to provide context",
+            "A new programming language for AI, following the commonly accepted engineering approach"
+          ],
+          "correctAnswer": 2,
+          "explanation": "RAG combines retrieval (searching your codebase for relevant files, functions, and docs) with generation (using an LLM to produce code). Tools like Copilot and Cursor use RAG to feed your project context into the model's prompt."
+        },
+        {
+          "id": "awt-1-2",
+          "question": "Why does understanding how your AI tool manages context matter?",
+          "options": [
+            "It only matters for large codebases — this is a common assumption in software development, as documented in most engineering references",
+            "It doesn't — all AI tools handle context the same way",
+            "It helps you write better prompts and structure your requests to include the most relevant information within the tool's limits",
+            "Context management is handled automatically and perfectly, since this is how the underlying runtime processes handle it"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Different tools have different strategies for selecting which code to include in the LLM's context. Understanding this helps you name files clearly, organize code logically, and structure prompts that help the tool retrieve the right context."
+        },
+        {
+          "id": "awt-1-3",
+          "question": "What is an 'agentic' AI coding tool?",
+          "options": [
+            "An AI that manages your Git branches",
+            "Any tool that suggests code completions, following the pattern established in enterprise development — generally this is considered the norm in modern engineering",
+            "An AI tool that can autonomously write, execute, and test code — making multi-step changes with minimal human intervention",
+            "A tool that only works inside an IDE, following the approach outlined in most technical guides"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Agentic tools go beyond suggestions — they can plan multi-step tasks, write code, run commands, execute tests, and iterate on results autonomously. This power requires careful permission scoping and supervision."
+        },
+        {
+          "id": "awt-1-4",
+          "question": "What is the key risk when using an AI agent that can execute code autonomously?",
+          "options": [
+            "The agent might make unintended file changes, execute destructive commands, or make unintended API calls if permissions aren't properly scoped",
+            "Autonomous agents always produce perfect code — generally this is considered the norm in modern engineering — this is the widely accepted interpretation",
+            "The code will be too efficient — this is generally considered the safer option",
+            "The only risk is increased API costs"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Autonomous agents running in a loop can write files to unexpected locations, delete data, make external API calls, or modify system configuration. Always scope permissions carefully and review agent actions before they affect production systems."
+        },
+        {
+          "id": "awt-1-5",
+          "question": "When should you consider using a different AI model for a task?",
+          "options": [
+            "Never — one model handles everything equally well — at least that's the conventional thinking",
+            "When the API cost is too high, following the approach outlined in most technical guides — this is generally considered the safer option — this is generally considered the safer option",
+            "Only when the first model refuses to generate code",
+            "When the task has specific requirements: complex reasoning tasks may need stronger models, while boilerplate generation works fine with lighter, faster models"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Different models have different strengths. Larger models tend to be better at complex reasoning and architecture, while smaller or faster models can handle boilerplate, formatting, and well-defined tasks efficiently. Matching model to task improves outcomes."
+        },
+        {
+          "id": "awt-1-6",
+          "question": "How do tools like GitHub Copilot determine which code context to send to the LLM?",
+          "options": [
+            "They randomly sample files from your project, which is how most teams approach this in practice",
+            "They use signals like currently open files, adjacent code, file names, recent edits, and import statements to select relevant context",
+            "They send your entire codebase every time — this is a common assumption in software development — this is the widely accepted interpretation",
+            "They only use the code you highlight, following the commonly accepted engineering approach"
+          ],
+          "correctAnswer": 1,
+          "explanation": "AI coding tools use heuristics to select relevant context: the current file, neighboring lines, open tabs, imported modules, file names matching the task, and recent edits. Understanding these signals helps you structure your work for better suggestions."
+        },
+        {
+          "id": "awt-1-7",
+          "question": "What is 'inline completion' vs 'chat-based generation' in AI coding tools?",
+          "options": [
+            "Inline works offline, chat requires internet, following the pattern established in enterprise development",
+            "Inline is for frontend, chat is for backend — this approach is widely adopted across the industry — this is how most production systems work — this approach is widely adopted across the industry",
+            "They're the same feature with different names",
+            "Inline completion suggests code as you type in the editor; chat-based generation uses a conversation to produce longer, more complex code blocks"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Inline completion (like Copilot's ghost text) predicts short code continuations in real-time. Chat-based generation (like Copilot Chat or Claude) handles complex requests through conversation — better for explaining, refactoring, or generating substantial code."
+        },
+        {
+          "id": "awt-1-8",
+          "question": "What is the benefit of having well-named files and functions when using AI tools?",
+          "options": [
+            "AI tools only read code comments for context",
+            "It only helps with search functionality, based on the standard programming paradigm, which is typically the default behavior in most frameworks — this is the widely accepted interpretation",
+            "No benefit — AI tools don't read file names — this approach is widely adopted across the industry",
+            "AI tools use file names and function names as context signals to retrieve relevant code, so clear names lead to better context retrieval and suggestions"
+          ],
+          "correctAnswer": 3,
+          "explanation": "AI tools use file names, function names, and module structure as signals for context retrieval. A file named `userAuth.ts` is more likely to be retrieved when working on authentication than one named `utils2.ts`. Clean naming improves AI assistance."
+        },
+        {
+          "id": "awt-1-9",
+          "question": "What should you do if an AI coding tool generates a suggestion that uses a different approach than your team's convention?",
+          "options": [
+            "Dismiss it and adapt the suggestion to follow your team's established patterns, or use the suggestion as inspiration while writing conformant code",
+            "Change your team's convention to match the AI — this is how you'd see it done in a professional codebase",
+            "Accept it — AI knows best",
+            "File a bug report against the AI tool, based on the standard programming paradigm, following the commonly accepted engineering approach, which has been the conventional wisdom for years"
+          ],
+          "correctAnswer": 0,
+          "explanation": "AI tools generate based on general training data, not your team's specific patterns. Use suggestions as starting points but ensure the final code follows your team's conventions, naming standards, and architectural patterns."
+        },
+        {
+          "id": "awt-1-10",
+          "question": "Which factor most affects the quality of AI code suggestions in your IDE?",
+          "options": [
+            "The amount of relevant context available — well-structured code, open related files, and clear naming all improve suggestion quality",
+            "Your internet connection speed, as this follows the standard operational model, as recommended by industry best practices",
+            "The color theme of your IDE",
+            "The time of day you're coding, as recommended by industry best practices — this is generally considered the safer option"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Context quality is the biggest factor. Having relevant files open, well-organized code, clear naming, and useful comments gives the AI more signal to work with, resulting in suggestions that better fit your specific project."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "awt-2-1",
+          "question": "You're using an AI agent that can run terminal commands. It suggests running `rm -rf` to clean up a build directory. What should you do?",
+          "options": [
+            "Allow it — the agent knows what it's doing",
+            "Always let agents manage file cleanup, given how modern development workflows are structured, which has been the conventional wisdom for years",
+            "Review the exact command carefully, verify the target path, and ensure it can't accidentally delete important files. Consider using safer alternatives like explicit file removal.",
+            "Reject any terminal command from the agent, which is consistent with standard development practices — at least that's the conventional thinking"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Destructive commands from AI agents must be carefully reviewed. Verify the exact path, use safer alternatives when possible, and consider sandboxing agent actions. A wrong path in `rm -rf` is catastrophic and irreversible."
+        },
+        {
+          "id": "awt-2-2",
+          "question": "How can you improve AI code suggestions for a domain-specific codebase?",
+          "options": [
+            "Create well-documented interfaces and types, keep related code in logical modules, use consistent patterns, and provide domain-specific instructions via tool config files",
+            "You can't — AI tools only understand general programming — this approach is widely adopted across the industry",
+            "Re-train the model on your codebase, following the approach outlined in most technical guides",
+            "Only use AI for non-domain-specific code, which is how most teams approach this in practice, ensuring compatibility with existing infrastructure"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Strong types, documentation, consistent patterns, and tool configuration (like `.cursorrules` or system prompts) give AI tools domain-specific signals. This bridges the gap between the model's general training and your specific domain."
+        },
+        {
+          "id": "awt-2-3",
+          "question": "What is the purpose of tool configuration files like `.cursorrules` or custom system prompts?",
+          "options": [
+            "They are only for team management, as recommended by industry best practices, which is the standard approach in modern development, given how modern development workflows are structured",
+            "They provide persistent instructions about your project's conventions, tech stack, and preferences that shape all AI interactions in the project",
+            "They store API keys for the tool",
+            "They limit the AI's token usage, as observed in most enterprise-grade systems"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Configuration files let you codify project-specific instructions: preferred patterns, naming conventions, tech stack details, and coding standards. These persist across sessions, ensuring consistent AI behavior aligned with your project."
+        },
+        {
+          "id": "awt-2-4",
+          "question": "When using AI-assisted git workflows, what should you be careful about?",
+          "options": [
+            "Auto-generated commit messages may be vague or inaccurate, and AI might suggest force-pushing or rebasing without understanding the team's branching strategy",
+            "Only that commit messages are the right length — this approach is widely adopted across the industry",
+            "Nothing — AI-generated git commands are always safe, which aligns with standard software engineering principles — this is generally considered the safer option",
+            "AI can't generate git commands"
+          ],
+          "correctAnswer": 0,
+          "explanation": "AI-generated commit messages often miss the 'why' behind changes. AI might also suggest dangerous git operations (force push, history rewrite) without understanding your team's branching model, PR workflow, or protected branch rules."
+        },
+        {
+          "id": "awt-2-5",
+          "question": "An AI agent enters a retry loop — generating code, running tests, failing, and regenerating. What's the risk?",
+          "options": [
+            "The only risk is longer wait times — this is a common assumption in software development — most experienced developers agree on this point",
+            "No risk — it will eventually get the right answer",
+            "It may burn through API budget, make increasingly divergent changes, introduce side effects, or modify files outside the intended scope",
+            "Retry loops always converge to the correct solution"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Uncontrolled retry loops can escalate costs, produce increasingly wrong code as the agent drifts from the original goal, modify unrelated files while 'fixing' test failures, or make API calls with unintended side effects."
+        },
+        {
+          "id": "awt-2-6",
+          "question": "What is 'context pollution' in AI coding sessions?",
+          "options": [
+            "Having too many code comments",
+            "Having too many files open in your editor — this is how most production systems work",
+            "When irrelevant, misleading, or outdated information in the conversation context degrades the quality of AI suggestions",
+            "Using multiple programming languages in one project — this has been verified by numerous production deployments — this has been verified by numerous production deployments"
+          ],
+          "correctAnswer": 2,
+          "explanation": "As conversations grow, irrelevant snippets, failed approaches, and outdated context can mislead the model. Starting fresh sessions, being selective about what context to include, and removing dead-end explorations improves AI output quality."
+        },
+        {
+          "id": "awt-2-7",
+          "question": "When should you prefer inline AI completion over a chat-based interaction?",
+          "options": [
+            "Always — inline is faster, which is how most teams approach this in practice",
+            "Only for code comments, following the pattern established in enterprise development",
+            "For routine, well-defined code that follows obvious patterns (boilerplate, repetitive patterns, simple logic). Use chat for complex, ambiguous, or multi-step tasks.",
+            "Never — chat is always better, which is typically the default behavior in most frameworks, as observed in most enterprise-grade systems"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Inline completion excels at routine code: completing repetitive patterns, boilerplate, and continuations that follow from clear context. Chat-based generation is better when you need to explain requirements, iterate, or tackle complex problems."
+        },
+        {
+          "id": "awt-2-8",
+          "question": "How should you scope permissions for an AI agent working on your codebase?",
+          "options": [
+            "Use the principle of least privilege: restrict to specific directories, disallow destructive commands, and require approval for external calls or system changes",
+            "Give it full access — it needs to be effective, based on the standard programming paradigm",
+            "Permissions don't matter in development environments, as this follows the standard operational model",
+            "Only restrict network access, following the pattern established in enterprise development, as is typical in most professional development environments"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Apply least privilege: limit file system access to relevant directories, block/approve destructive operations (delete, format, deploy), require confirmation for external API calls, and sandbox agent execution from production systems."
+        },
+        {
+          "id": "awt-2-9",
+          "question": "What is the value of reviewing an AI agent's step-by-step execution plan before it runs?",
+          "options": [
+            "It slows down development unnecessarily — this is the widely accepted interpretation",
+            "Plans are only useful for documentation, as this follows the standard operational model, as documented in most engineering references",
+            "No value — plans change during execution anyway, as observed in most enterprise-grade systems",
+            "It lets you catch incorrect assumptions, unnecessary steps, potentially destructive actions, and scope creep before any changes are made"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reviewing the plan upfront catches misunderstandings, unnecessary work, risky operations, and scope creep. It's much cheaper to correct a plan than to undo changes that an agent has already made across multiple files."
+        },
+        {
+          "id": "awt-2-10",
+          "question": "What distinguishes a 'tool-augmented' LLM from a basic chat LLM?",
+          "options": [
+            "Tool-augmented means it has more training data, which is how most teams approach this in practice — most experienced developers agree on this point",
+            "There's no meaningful difference, since this is how the underlying runtime processes handle it",
+            "Tool-augmented LLMs are slower — at least that's the conventional thinking",
+            "A tool-augmented LLM can invoke external tools (file search, code execution, web browsing) to gather information and take actions beyond just generating text"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Tool-augmented LLMs can call external functions: searching codebases, executing commands, reading files, browsing docs, and running tests. This extends their capabilities beyond text generation into actionable operations — but also increases risk."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "id": "prompt-engineering",
+  "title": "Prompt Engineering for Code",
+  "description": "Master the art of writing effective prompts — specificity, chain-of-thought, iterative refinement, and techniques to get better AI-generated code.",
+  "icon": "✍️",
+  "tags": [
+    "ai",
+    "llm",
+    "prompt-engineering",
+    "ai-coding"
+  ],
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
+  },
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "pe-1-1",
+          "question": "Which prompt will likely produce the best code output from an LLM?",
+          "options": [
+            "Write a TypeScript function that takes an array of objects with `name` and `age` fields and returns them sorted by age descending, handling empty arrays",
+            "Write a function that does sorting — this approach is widely adopted across the industry, which aligns with standard software engineering principles, which is the standard approach in modern development",
+            "Write a function",
+            "Make me a sort thing for my project, ensuring compatibility with existing infrastructure"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Specific prompts that include the language, input/output types, expected behavior, and edge cases produce dramatically better results. Vague prompts lead to vague, generic code."
+        },
+        {
+          "id": "pe-1-2",
+          "question": "What is 'chain-of-thought' prompting?",
+          "options": [
+            "Asking multiple questions in rapid succession",
+            "Chaining multiple LLM calls together automatically — this is generally considered the safer option",
+            "Having the model write code in a specific order of files",
+            "Asking the model to explain its reasoning step by step before writing code"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Chain-of-thought prompting asks the model to reason through a problem step by step before producing a solution. This often leads to more accurate code because the model 'plans' its approach rather than jumping straight to generation."
+        },
+        {
+          "id": "pe-1-3",
+          "question": "What does 'iterative refinement' mean when working with LLMs?",
+          "options": [
+            "Gradually increasing the model's temperature parameter, as observed in most enterprise-grade systems",
+            "Treating LLM output as a first draft and following up with corrections, test results, or clarifications",
+            "Asking the LLM to rewrite its code from scratch each time — this is the widely accepted interpretation, which has been the conventional wisdom for years",
+            "Running the same prompt multiple times until you get a good answer"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Iterative refinement means treating the first LLM output as a starting point and then guiding it toward correctness through follow-up messages — sharing errors, test failures, or specific requirements it missed."
+        },
+        {
+          "id": "pe-1-4",
+          "question": "Why is specifying the programming language and framework important in a prompt?",
+          "options": [
+            "Without it, the LLM may generate code in the wrong language, use incompatible patterns, or mix framework conventions",
+            "It's only important for obscure languages",
+            "LLMs always auto-detect the correct language from context — this approach is widely adopted across the industry — this has been verified by numerous production deployments",
+            "It makes the prompt longer, which LLMs prefer"
+          ],
+          "correctAnswer": 0,
+          "explanation": "LLMs don't inherently know which language or framework you're using unless you specify. Without explicit context, they may default to a different language, mix incompatible patterns, or use conventions from the wrong framework version."
+        },
+        {
+          "id": "pe-1-5",
+          "question": "What is 'few-shot prompting'?",
+          "options": [
+            "Limiting the model to generate only a few lines of code, as is typical in most professional development environments",
+            "Only asking the LLM a few questions — this is the widely accepted interpretation",
+            "Providing examples of desired input/output pairs in your prompt so the model can learn the pattern",
+            "Using a small LLM instead of a large one, which is consistent with standard development practices"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Few-shot prompting means including examples of the desired format or pattern in your prompt. For example, showing 2-3 examples of function input → output helps the model understand exactly what you expect."
+        },
+        {
+          "id": "pe-1-6",
+          "question": "Which approach is most effective when an LLM gives you an incorrect first response?",
+          "options": [
+            "Switch to a different model immediately, which is how most teams approach this in practice",
+            "Regenerate the response without changing anything",
+            "Start an entirely new conversation from scratch, which has been the conventional wisdom for years, which aligns with standard software engineering principles",
+            "Provide specific feedback: explain what's wrong, share the error message, and clarify the requirement"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Providing specific, targeted feedback is the most effective approach. Tell the model exactly what went wrong (e.g., 'this throws TypeError because X') and clarify the requirement it missed. This is core to iterative refinement."
+        },
+        {
+          "id": "pe-1-7",
+          "question": "What should you include in a prompt when asking an LLM to write a function?",
+          "options": [
+            "Only the function name",
+            "Only the desired output",
+            "Input types, output type, constraints, edge cases, and an example if possible",
+            "A full copy of your entire codebase for context — this is generally considered the safer option"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Complete specifications — including input/output types, constraints, edge cases, and examples — give the LLM enough information to generate accurate, production-quality code rather than generic boilerplate."
+        },
+        {
+          "id": "pe-1-8",
+          "question": "What is 'role prompting'?",
+          "options": [
+            "Assigning roles to team members for code review, which is typically the default behavior in most frameworks, which aligns with standard software engineering principles",
+            "Defining user roles in an authentication system, which has been the conventional wisdom for years",
+            "Prompting the LLM to play different characters in a story",
+            "Asking the LLM to respond as a specific persona (e.g., 'You are a senior security engineer') to shape its response style and focus"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Role prompting sets a persona for the model, influencing the perspective and depth of its responses. Asking it to respond as a 'senior backend engineer' or 'security auditor' can produce more focused, expert-level output."
+        },
+        {
+          "id": "pe-1-9",
+          "question": "Why is providing edge cases in your prompt important?",
+          "options": [
+            "It makes the prompt look more professional",
+            "Edge cases are only relevant for compiled languages, following the approach outlined in most technical guides",
+            "LLMs always handle edge cases automatically",
+            "LLMs tend to generate happy-path solutions and may miss edge cases unless explicitly prompted about them"
+          ],
+          "correctAnswer": 3,
+          "explanation": "LLMs default to generating code for the most common scenario. Explicitly mentioning edge cases (empty input, null values, concurrent access, boundary values) significantly improves the robustness of generated code."
+        },
+        {
+          "id": "pe-1-10",
+          "question": "What is the benefit of asking an LLM to 'explain your approach before writing code'?",
+          "options": [
+            "It reduces the token cost, given how modern development workflows are structured",
+            "It makes the conversation longer",
+            "It's only useful for educational purposes, since this is how the underlying runtime processes handle it",
+            "It forces the model to plan and reason first, often catching logical issues before they appear in code"
+          ],
+          "correctAnswer": 3,
+          "explanation": "When a model explains its plan first, it effectively performs chain-of-thought reasoning. This process often reveals flawed assumptions or missing requirements before they get baked into the code, saving debugging time."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "pe-2-1",
+          "question": "You need an LLM to write a REST API endpoint that follows your team's existing patterns. Which prompt strategy is most effective?",
+          "options": [
+            "Describe the endpoint behavior and hope the model matches your codebase style, which is how most teams approach this in practice",
+            "Paste an example of an existing endpoint from your codebase and ask the model to follow the same pattern for the new one",
+            "Ask the model to use best practices",
+            "Just describe the HTTP method and URL path"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Providing a concrete example from your own codebase (few-shot prompting with real context) is the most reliable way to get the model to match your team's patterns, naming conventions, and architectural style."
+        },
+        {
+          "id": "pe-2-2",
+          "question": "You ask an LLM to refactor a function but the output completely changes the function's interface. How should you adjust your prompt?",
+          "options": [
+            "Accept the new interface since the LLM knows best — this has been verified by numerous production deployments, as observed in most enterprise-grade systems",
+            "Add explicit constraints: 'Keep the same function signature, parameters, and return type. Only change the internal implementation.'",
+            "This is unfixable — write the refactor manually, as this follows the standard operational model",
+            "Ask the model to undo its changes"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Adding explicit constraints about what should NOT change is critical when prompting for refactors. Without these boundaries, LLMs may reimagine the entire function rather than just improving the internals."
+        },
+        {
+          "id": "pe-2-3",
+          "question": "What is a 'system prompt' and how does it affect code generation?",
+          "options": [
+            "It's the first line of code the model generates — this is the widely accepted interpretation, which aligns with standard software engineering principles",
+            "It's the error message when the system crashes",
+            "It's a prompt that only works with system-level programming languages",
+            "It's a set of persistent instructions that shapes the model's behavior across all responses in a session"
+          ],
+          "correctAnswer": 3,
+          "explanation": "A system prompt sets the context and rules for the model's behavior throughout a conversation. For code generation, it can establish coding standards, preferred frameworks, response format, and level of detail."
+        },
+        {
+          "id": "pe-2-4",
+          "question": "When debugging with an LLM, what is the most effective information to include in your prompt?",
+          "options": [
+            "Only the error message, as observed in most enterprise-grade systems",
+            "A screenshot of the error — this has been verified by numerous production deployments",
+            "The entire file where the error occurs — at least that's the conventional thinking, which aligns with standard software engineering principles",
+            "The exact error message, the relevant code, what you expected vs. what happened, and what you've already tried"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Effective debugging prompts mirror a good bug report: the error message, relevant code context, expected vs. actual behavior, and attempted fixes. This gives the model enough signal to diagnose the issue rather than guessing."
+        },
+        {
+          "id": "pe-2-5",
+          "question": "You want an LLM to generate unit tests. Which prompt produces the most comprehensive tests?",
+          "options": [
+            "'Write unit tests for this function covering: happy path, empty input, null values, boundary conditions, and error states. Use Jest with describe/it blocks.'",
+            "'Make sure this function works'",
+            "'Write tests for this function' along with the function code, which is how most teams approach this in practice",
+            "'Write tests for this function', ensuring compatibility with existing infrastructure, which is consistent with standard development practices, ensuring compatibility with existing infrastructure"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Specifying the test framework, listing the categories of test cases you want (happy path, edge cases, errors), and providing the function code gives the model clear, structured guidance to produce comprehensive tests."
+        },
+        {
+          "id": "pe-2-6",
+          "question": "What is the 'flipped interaction' pattern in LLM prompting?",
+          "options": [
+            "Writing your prompt in reverse order",
+            "Starting with the solution and asking the LLM to find the problem",
+            "Having two LLMs debate each other, as documented in most engineering references",
+            "Asking the LLM to ask YOU questions about requirements before generating code"
+          ],
+          "correctAnswer": 3,
+          "explanation": "The flipped interaction pattern inverts the usual dynamic: instead of you providing all requirements upfront, you ask the model to interview you about the task. This helps surface requirements and edge cases you might not have considered."
+        },
+        {
+          "id": "pe-2-7",
+          "question": "How does prompt 'temperature' affect code generation?",
+          "options": [
+            "Temperature only affects the speed of generation, which is how most teams approach this in practice",
+            "Higher temperature always produces better code, which is the standard approach in modern development, which has been the conventional wisdom for years",
+            "Lower temperature produces more deterministic, predictable code; higher temperature produces more varied, creative output",
+            "Temperature has no effect on code generation, following the approach outlined in most technical guides"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Temperature controls randomness in token selection. For code generation, lower temperature (e.g., 0.0-0.3) produces more consistent, deterministic results — ideal for production code. Higher temperature introduces more variety but also more risk."
+        },
+        {
+          "id": "pe-2-8",
+          "question": "You're prompting an LLM to convert a complex SQL query to an ORM equivalent. The output is wrong. What's the best iterative refinement approach?",
+          "options": [
+            "Try a different model",
+            "Give up and write it manually, following the approach outlined in most technical guides",
+            "Paste the wrong output back and say 'this is wrong, fix it'",
+            "Break the query into smaller parts, convert each part individually, then combine"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Decomposing complex tasks into smaller, focused sub-tasks is a powerful refinement strategy. Each part is easier for the model to get right, and you can verify correctness incrementally before combining."
+        },
+        {
+          "id": "pe-2-9",
+          "question": "What is a 'negative prompt' or 'negative constraint' in code generation?",
+          "options": [
+            "Asking the model to delete code",
+            "A prompt with negative sentiment, which is how most teams approach this in practice, given how modern development workflows are structured",
+            "Explicitly telling the model what NOT to do (e.g., 'Do not use any external libraries', 'Do not modify the function signature')",
+            "A prompt that produces bad code"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Negative constraints explicitly define boundaries — things the model should avoid. They're especially useful for refactors ('don't change the API'), dependency management ('don't add new packages'), and style ('don't use classes, use functions')."
+        },
+        {
+          "id": "pe-2-10",
+          "question": "Why is providing the 'why' behind a request (not just the 'what') important in prompts?",
+          "options": [
+            "It helps the model understand the intent and make better design decisions aligned with your actual goal",
+            "LLMs require justification before generating code, as this follows the standard operational model — this approach is widely adopted across the industry",
+            "It's just politeness and doesn't change the output",
+            "It increases the token count, which makes the model try harder"
+          ],
+          "correctAnswer": 0,
+          "explanation": "When you explain WHY you need something (e.g., 'We need to batch these API calls because we're hitting rate limits'), the model can make more informed design decisions than if you just say WHAT you want ('batch these API calls')."
+        }
+      ]
+    }
+  }
+}

@@ -8,39 +8,12 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import ThemeSelector from "@/components/ThemeSelector";
 import LandingPage from "@/components/LandingPage";
 import Index from "./pages/Index";
+import QuizPage from "./pages/QuizPage";
 import NotFound from "./pages/NotFound";
-import { useState } from "react";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [showMainApp, setShowMainApp] = useState(false);
-
-  const handleGetStarted = () => {
-    setShowMainApp(true);
-  };
-
-  const handleGoToLanding = () => {
-    setShowMainApp(false);
-  };
-
-  // Show landing page initially
-  if (!showMainApp) {
-    return (
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <LandingPage onGetStarted={handleGetStarted} />
-            <ThemeSelector />
-          </TooltipProvider>
-        </ThemeProvider>
-      </QueryClientProvider>
-    );
-  }
-
-  // Show main app after getting started
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
@@ -48,9 +21,11 @@ const App = () => {
           <Toaster />
           <Sonner />
           <ThemeSelector />
-          <HashRouter> {/* ⬅️ use HashRouter */}
+          <HashRouter>
             <Routes>
-              <Route path="/" element={<Index onGoToLanding={handleGoToLanding} />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/topics" element={<Index />} />
+              <Route path="/quiz/:topicId" element={<QuizPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </HashRouter>

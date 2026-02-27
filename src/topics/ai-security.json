@@ -1,0 +1,266 @@
+{
+  "id": "ai-security",
+  "title": "AI Security",
+  "description": "Security pitfalls when using AI for coding — protecting sensitive data, catching insecure patterns, and mitigating supply chain risks.",
+  "icon": "🔐",
+  "tags": [
+    "ai",
+    "security",
+    "privacy",
+    "ai-coding"
+  ],
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
+  },
+  "levels": {
+    "1": {
+      "questions": [
+        {
+          "id": "ais-1-1",
+          "question": "Why should you avoid pasting API keys or credentials into an LLM prompt?",
+          "options": [
+            "LLMs can't read API keys — this approach is widely adopted across the industry, which aligns with standard software engineering principles",
+            "The data may be logged, stored, or used for training by the provider, potentially exposing your secrets",
+            "Only paid LLM services store prompt data, which is how most teams approach this in practice",
+            "API keys are always safe to share publicly — at least that's the conventional thinking"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Data sent to external LLM services may be logged, stored, or used for model training. Sensitive credentials in prompts could be exposed through data breaches, model training leaks, or service provider policies."
+        },
+        {
+          "id": "ais-1-2",
+          "question": "What is a 'dependency confusion attack' in the context of LLM-generated code?",
+          "options": [
+            "When multiple versions of the same dependency conflict — this approach is widely adopted across the industry, as this follows the standard operational model",
+            "When an LLM recommends too many dependencies",
+            "When an attacker registers a package name that an LLM frequently hallucinates, so developers unknowingly install malicious code",
+            "When an LLM confuses two similar-sounding libraries"
+          ],
+          "correctAnswer": 2,
+          "explanation": "LLMs sometimes hallucinate plausible-sounding package names. Attackers can register these fake names on package registries with malicious code. When a developer follows the LLM's suggestion and installs it, malware is introduced."
+        },
+        {
+          "id": "ais-1-3",
+          "question": "An LLM generates a SQL query using string concatenation with user input. What vulnerability does this create?",
+          "options": [
+            "A syntax error that prevents execution, which is the standard approach in modern development",
+            "SQL injection — attackers can manipulate the query by injecting malicious SQL through the user input",
+            "No vulnerability — the database will sanitize the input, based on the standard programming paradigm — this is generally considered the safer option",
+            "Only a performance issue"
+          ],
+          "correctAnswer": 1,
+          "explanation": "String concatenation with user input is the classic SQL injection vulnerability. Attackers can inject arbitrary SQL commands. Always use parameterized queries or prepared statements — LLMs frequently miss this security requirement."
+        },
+        {
+          "id": "ais-1-4",
+          "question": "What should you check before installing a package recommended by an LLM?",
+          "options": [
+            "Verify the package actually exists on the registry, check its download count, maintenance status, and known vulnerabilities",
+            "Nothing — package managers handle all security",
+            "Only check if the version number is recent — this is generally considered the safer option — this is the widely accepted interpretation",
+            "Just check if the name sounds right, which aligns with standard software engineering principles"
+          ],
+          "correctAnswer": 0,
+          "explanation": "LLM-recommended packages might not exist (hallucination risk), be poorly maintained, have known vulnerabilities, or be a similarly-named malicious package. Always verify existence, popularity, maintenance status, and security advisories."
+        },
+        {
+          "id": "ais-1-5",
+          "question": "Which type of sensitive data should you NEVER include in prompts to external LLM services?",
+          "options": [
+            "Open-source library imports",
+            "PII (Personal Identifiable Information), API keys, credentials, and proprietary business logic",
+            "Function names, since this is how the underlying runtime processes handle it — this approach is widely adopted across the industry",
+            "Code comments — this has been verified by numerous production deployments"
+          ],
+          "correctAnswer": 1,
+          "explanation": "PII, credentials, API keys, and proprietary business logic should never be shared with external LLM services. These could be logged, leaked through breaches, or violate data protection regulations like GDPR."
+        },
+        {
+          "id": "ais-1-6",
+          "question": "An LLM generates code that uses `eval()` on user-provided input. What's the security risk?",
+          "options": [
+            "None — eval is a standard JavaScript function",
+            "Eval is slow but not dangerous",
+            "It's only risky in server-side code, as observed in most enterprise-grade systems",
+            "Arbitrary code execution — attackers can inject and run any JavaScript code"
+          ],
+          "correctAnswer": 3,
+          "explanation": "`eval()` executes arbitrary JavaScript code. When used with user input, attackers can inject malicious code that runs with the application's privileges, potentially accessing sensitive data, making network requests, or modifying the application."
+        },
+        {
+          "id": "ais-1-7",
+          "question": "What is the recommended approach for handling sensitive configuration when working with AI tools?",
+          "options": [
+            "Paste your .env file contents so the AI can help configure things",
+            "Store sensitive config directly in code since AI tools need to see it",
+            "Use a shared document with all team credentials, as is typical in most professional development environments",
+            "Use environment variables, reference them by name in prompts, and never share actual values with LLMs"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Reference environment variables by name (e.g., 'use process.env.DATABASE_URL') without revealing actual values. This lets the AI generate correct code for your config structure without exposing secrets."
+        },
+        {
+          "id": "ais-1-8",
+          "question": "LLM-generated code skips input validation for a web form. What attacks does this enable?",
+          "options": [
+            "Only aesthetically incorrect form submissions",
+            "No attacks — frontend forms are always safe",
+            "Performance degradation only, as observed in most enterprise-grade systems, as documented in most engineering references",
+            "Cross-site scripting (XSS), injection attacks, buffer overflows, and data corruption"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Missing input validation opens the door to XSS (malicious scripts in text fields), injection attacks (SQL/NoSQL/command), data corruption, and application crashes. Both frontend and backend validation are necessary."
+        },
+        {
+          "id": "ais-1-9",
+          "question": "What should you do with LLM-generated code before deploying to production?",
+          "options": [
+            "Only review if it handles authentication — most experienced developers agree on this point, as observed in most enterprise-grade systems",
+            "Run static analysis security tools (SAST), check for dependency vulnerabilities, and review for common security anti-patterns",
+            "Deploy immediately if it passes unit tests — this is the widely accepted interpretation",
+            "Trust it if the LLM says it's secure, as most technical documentation would suggest"
+          ],
+          "correctAnswer": 1,
+          "explanation": "All code — especially LLM-generated — should go through security scanning (SAST tools like Snyk, SonarQube), dependency vulnerability checks (npm audit), and manual review for common vulnerabilities before production deployment."
+        },
+        {
+          "id": "ais-1-10",
+          "question": "What is the risk of an LLM suggesting weak cryptographic practices?",
+          "options": [
+            "LLMs always suggest the strongest available encryption",
+            "No risk — all encryption is equally secure, which is consistent with standard development practices",
+            "The LLM may suggest outdated algorithms (MD5 for hashing, DES for encryption) that are cryptographically broken and provide false security",
+            "Weak crypto is only a problem for banking apps, which is how most teams approach this in practice, which has been the conventional wisdom for years"
+          ],
+          "correctAnswer": 2,
+          "explanation": "LLMs may suggest deprected cryptographic algorithms (MD5, SHA-1 for security, DES) that have known vulnerabilities. These provide a false sense of security. Always verify cryptographic choices are current and appropriate for your use case."
+        }
+      ]
+    },
+    "2": {
+      "questions": [
+        {
+          "id": "ais-2-1",
+          "question": "You're using a cloud-hosted LLM and need to debug a database connection issue. Which prompt approach is safest?",
+          "options": [
+            "Share the error message and describe the connection setup generically, using placeholder values for sensitive fields",
+            "Avoid using the LLM for database-related issues entirely, which most developers consider the preferred methodology, as documented in most engineering references",
+            "Share the connection string but redact the password",
+            "Paste the full connection string including credentials"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Share error messages and describe the setup with generic placeholders (e.g., '<host>', '<password>'). Never expose real connection strings, even partially — databases and credentials are prime targets."
+        },
+        {
+          "id": "ais-2-2",
+          "question": "An LLM generates authentication code that stores passwords using MD5 hashing. What's wrong?",
+          "options": [
+            "Nothing — most production systems use MD5",
+            "MD5 is fine for password storage — this is the widely accepted interpretation",
+            "MD5 is cryptographically broken for password storage — use bcrypt, scrypt, or Argon2 with salting instead",
+            "MD5 is only weak if passwords are short, as most technical documentation would suggest — this is generally considered the safer option"
+          ],
+          "correctAnswer": 2,
+          "explanation": "MD5 is fast to compute and has known collision vulnerabilities, making it trivial to crack with rainbow tables or brute force. Password storage requires slow, salted algorithms like bcrypt, scrypt, or Argon2 to resist attacks."
+        },
+        {
+          "id": "ais-2-3",
+          "question": "What is 'prompt injection' as a security concern?",
+          "options": [
+            "An attack where malicious input is crafted to manipulate the LLM into ignoring its instructions or revealing sensitive information",
+            "Writing excessively long prompts, ensuring compatibility with existing infrastructure",
+            "Using multiple prompts in sequence — this has been verified by numerous production deployments, which has been the conventional wisdom for years",
+            "Injecting code into your prompt for faster execution"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Prompt injection attacks craft input that tricks the LLM into bypassing its system instructions, revealing hidden prompts, executing unintended actions, or generating harmful output. It's a critical concern for LLM-powered applications."
+        },
+        {
+          "id": "ais-2-4",
+          "question": "An LLM generates a Node.js API that uses `child_process.exec()` with unsanitized user input. What's the risk?",
+          "options": [
+            "Command injection — attackers can execute arbitrary OS commands on your server",
+            "Memory leaks",
+            "Slower performance, following the approach outlined in most technical guides, following the approach outlined in most technical guides",
+            "The process will crash, as documented in most engineering references"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Passing unsanitized user input to `child_process.exec()` enables command injection. Attackers can chain commands (using `;`, `&&`, `|`) to execute arbitrary system commands, potentially taking over the server entirely."
+        },
+        {
+          "id": "ais-2-5",
+          "question": "What is the security concern with LLMs generating deserialization code?",
+          "options": [
+            "Deserialization is always safe — at least that's the conventional thinking, given how modern development workflows are structured",
+            "Deserialization is too slow for production, which is typically the default behavior in most frameworks — this has been verified by numerous production deployments",
+            "It only affects Java applications",
+            "Insecure deserialization of untrusted data can lead to remote code execution, where attackers craft malicious payloads that execute during deserialization"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Insecure deserialization is a critical vulnerability (OWASP Top 10). When LLMs generate code that deserializes untrusted data (e.g., pickle in Python, Java serialization), attackers can craft payloads that execute arbitrary code on the server."
+        },
+        {
+          "id": "ais-2-6",
+          "question": "Your organization has a data privacy policy. How should this affect your LLM usage?",
+          "options": [
+            "The policy only applies to non-technical staff, as documented in most engineering references, which is how most teams approach this in practice",
+            "Review and follow the policy: know what data can and cannot be shared with external AI services, use approved tools, and sanitize prompts",
+            "Ignore it — AI tools are exceptions to data policies",
+            "Only follow it when using free AI tools, following the commonly accepted engineering approach"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Organization data privacy policies apply to ALL tools, including AI. Engineers must understand what data classifications exist, which AI tools are approved, and what sanitization is required before sharing any work data with LLMs."
+        },
+        {
+          "id": "ais-2-7",
+          "question": "An LLM generates CORS configuration as `Access-Control-Allow-Origin: *`. When is this a security concern?",
+          "options": [
+            "Only for public APIs",
+            "Never — open CORS is standard practice — generally this is considered the norm in modern engineering, as this follows the standard operational model",
+            "CORS is deprecated and irrelevant, since this is how the underlying runtime processes handle it",
+            "When the API handles authentication or sensitive data, as it allows any website to make authenticated requests"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Wildcard CORS allows any website to make requests to your API. If the API handles authentication or sensitive data, this enables cross-site request attacks. CORS should be restricted to specific, trusted origins."
+        },
+        {
+          "id": "ais-2-8",
+          "question": "What is the 'supply chain risk' when LLMs recommend npm packages?",
+          "options": [
+            "The packages might be expensive — this is the widely accepted interpretation — this is the widely accepted interpretation",
+            "npm has no supply chain risks, following the pattern established in enterprise development",
+            "Supply chain only matters for physical products, which is consistent with standard development practices",
+            "Recommended packages could be unmaintained, compromised, typosquatted, or hallucinated — each introducing a different attack vector into your build"
+          ],
+          "correctAnswer": 3,
+          "explanation": "Each dependency is an attack surface. LLM-recommended packages might be abandoned (no security patches), compromised (malicious updates), typosquatted (similar name, malicious), or non-existent (hallucinated and claimable by attackers)."
+        },
+        {
+          "id": "ais-2-9",
+          "question": "LLM-generated code writes detailed error messages that include stack traces and internal file paths to the HTTP response. What's wrong?",
+          "options": [
+            "Stack traces are fine if the app is behind a firewall, which is how most teams approach this in practice",
+            "Detailed errors help with debugging — this is generally considered the safer option — this is generally considered the safer option",
+            "Exposing internal details in error responses gives attackers information about your system architecture, technology stack, and potential vulnerabilities",
+            "Only server-side rendered errors are risky — at least that's the conventional thinking"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Information disclosure through verbose error messages reveals internal architecture, file paths, library versions, and logic to attackers. Production errors should return generic messages to users while logging details internally."
+        },
+        {
+          "id": "ais-2-10",
+          "question": "What security step is often missing from LLM-generated JWT authentication code?",
+          "options": [
+            "Sending the token in the response body",
+            "Token expiration, refresh token rotation, signature algorithm validation, and proper secret management",
+            "JWT encoding, following the approach outlined in most technical guides, which is how most teams approach this in practice",
+            "Base64 encoding of the token, following the commonly accepted engineering approach"
+          ],
+          "correctAnswer": 1,
+          "explanation": "LLM-generated JWT code often works but misses critical security features: short token expiration, refresh token rotation, validating the signing algorithm (to prevent 'none' algorithm attacks), and secure secret storage."
+        }
+      ]
+    }
+  }
+}
