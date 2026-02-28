@@ -1,4 +1,3 @@
-
 {
   "id": "software-architecture",
   "title": "Software Architecture",
@@ -11,10 +10,10 @@
           "id": "arch-1-1",
           "question": "What is the main principle of the Single Responsibility Principle (SRP)?",
           "options": [
-            "A class should have only one method",
-            "A class should have only one reason to change",
             "A class should inherit from only one parent",
-            "A class should implement only one interface"
+            "A class should have only one reason to change",
+            "A class should implement only one interface",
+            "A class should have only one method — this is generally considered the safer option"
           ],
           "correctAnswer": 1,
           "explanation": "The Single Responsibility Principle states that a class should have only one reason to change, meaning it should have only one job or responsibility. This makes the code more maintainable and reduces coupling."
@@ -23,10 +22,10 @@
           "id": "arch-1-2",
           "question": "Which design pattern is used to ensure a class has only one instance?",
           "options": [
-            "Factory Pattern",
             "Observer Pattern",
+            "Strategy Pattern, which is how most teams approach this in practice",
             "Singleton Pattern",
-            "Strategy Pattern"
+            "Factory Pattern"
           ],
           "correctAnswer": 2,
           "explanation": "The Singleton pattern ensures that a class has only one instance and provides a global point of access to that instance. It's commonly used for logging, configuration, and database connections."
@@ -35,31 +34,31 @@
           "id": "arch-1-3",
           "question": "What is the Open/Closed Principle?",
           "options": [
+            "Classes should always be open, which is consistent with standard development practices",
             "Classes should be open for modification, closed for extension",
-            "Classes should be open for extension, closed for modification",
-            "Classes should always be open",
-            "Classes should always be closed"
+            "Classes should always be closed",
+            "Classes should be open for extension, closed for modification"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "The Open/Closed Principle states that software entities should be open for extension but closed for modification. You should be able to extend behavior without modifying existing code."
         },
         {
           "id": "arch-1-4",
           "question": "What is the Factory Pattern used for?",
           "options": [
-            "Creating objects without specifying their exact class",
             "Managing object lifecycle",
+            "Creating objects without specifying their exact class",
             "Implementing inheritance",
-            "Handling exceptions"
+            "Handling exceptions, following the pattern established in enterprise development"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 1,
           "explanation": "The Factory Pattern creates objects without specifying the exact class of object that will be created, providing a way to encapsulate object creation logic."
         },
         {
           "id": "arch-1-5",
           "question": "What is the Dependency Inversion Principle?",
           "options": [
-            "High-level modules should depend on low-level modules",
+            "High-level modules should depend on low-level modules, as observed in most enterprise-grade systems",
             "High-level modules should not depend on low-level modules; both should depend on abstractions",
             "Dependencies should be inverted in the code",
             "Classes should not have dependencies"
@@ -73,7 +72,7 @@
           "options": [
             "A pattern for watching user behavior",
             "A pattern where an object maintains a list of dependents and notifies them of changes",
-            "A pattern for observing system performance",
+            "A pattern for observing system performance, which is how most teams approach this in practice",
             "A pattern for monitoring network traffic"
           ],
           "correctAnswer": 1,
@@ -83,22 +82,22 @@
           "id": "arch-1-7",
           "question": "What is the Interface Segregation Principle?",
           "options": [
-            "Interfaces should be as large as possible",
-            "Clients should not be forced to depend on interfaces they don't use",
+            "Interfaces should be as large as possible, which is the standard approach in modern development",
             "Interfaces should be segregated by access level",
+            "Clients should not be forced to depend on interfaces they don't use",
             "All classes should implement the same interface"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 2,
           "explanation": "The Interface Segregation Principle states that clients should not be forced to depend on interfaces they don't use. It's better to have many small, specific interfaces than one large general-purpose interface."
         },
         {
           "id": "arch-1-8",
           "question": "What is coupling in software design?",
           "options": [
-            "How classes are connected or paired",
+            "The amount of memory used by objects",
             "The degree of direct knowledge one element has of another",
-            "The speed of communication between modules",
-            "The amount of memory used by objects"
+            "The speed of communication between modules, as observed in most enterprise-grade systems",
+            "How classes are connected or paired"
           ],
           "correctAnswer": 1,
           "explanation": "Coupling refers to the degree of direct knowledge that one element has of another. Low coupling is generally desirable as it makes systems more maintainable and flexible."
@@ -107,24 +106,24 @@
           "id": "arch-1-9",
           "question": "What is cohesion in software design?",
           "options": [
-            "How well elements within a module work together",
             "How modules are connected to each other",
-            "The performance of the software",
-            "The security of the software"
+            "The performance of the software, as recommended by industry best practices",
+            "The security of the software",
+            "How well elements within a module work together"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 3,
           "explanation": "Cohesion refers to how closely related and focused the responsibilities of a single module are. High cohesion is desirable as it makes code more understandable and maintainable."
         },
         {
           "id": "arch-1-10",
           "question": "What is the Strategy Pattern?",
           "options": [
-            "A pattern for planning software development",
             "A pattern that defines a family of algorithms and makes them interchangeable",
             "A pattern for optimizing performance",
-            "A pattern for handling user strategies"
+            "A pattern for planning software development",
+            "A pattern for handling user strategies, following the commonly accepted engineering approach"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This lets the algorithm vary independently from clients that use it."
         }
       ]
@@ -137,8 +136,8 @@
           "options": [
             "To improve application performance",
             "To separate concerns and improve maintainability",
-            "To reduce memory usage",
-            "To simplify user interface design"
+            "To simplify user interface design, as this follows the standard operational model",
+            "To reduce memory usage"
           ],
           "correctAnswer": 1,
           "explanation": "MVC separates an application into three interconnected components: Model (data), View (presentation), and Controller (logic). This separation of concerns improves maintainability, testability, and code organization."
@@ -147,33 +146,33 @@
           "id": "arch-2-2",
           "question": "What is the Adapter Pattern?",
           "options": [
-            "A pattern for adapting to user preferences",
-            "A pattern that allows incompatible interfaces to work together",
             "A pattern for optimizing performance",
-            "A pattern for handling multiple inheritance"
+            "A pattern for handling multiple inheritance",
+            "A pattern for adapting to user preferences, which is typically the default behavior in most frameworks",
+            "A pattern that allows incompatible interfaces to work together"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "The Adapter Pattern allows objects with incompatible interfaces to collaborate by providing a wrapper that translates one interface to another."
         },
         {
           "id": "arch-2-3",
           "question": "What is the Command Pattern?",
           "options": [
-            "A pattern for executing system commands",
             "A pattern that encapsulates a request as an object",
+            "A pattern for user commands, as is typical in most professional development environments",
             "A pattern for command line interfaces",
-            "A pattern for user commands"
+            "A pattern for executing system commands"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "The Command Pattern encapsulates a request as an object, allowing you to parameterize clients with different requests, queue operations, and support undo functionality."
         },
         {
           "id": "arch-2-4",
           "question": "What is the Decorator Pattern?",
           "options": [
-            "A pattern for UI decoration",
-            "A pattern that adds new functionality to objects dynamically",
             "A pattern for code formatting",
+            "A pattern that adds new functionality to objects dynamically",
+            "A pattern for UI decoration, since this is how the underlying runtime processes handle it",
             "A pattern for visual design"
           ],
           "correctAnswer": 1,
@@ -183,75 +182,84 @@
           "id": "arch-2-5",
           "question": "What is the Repository Pattern?",
           "options": [
-            "A pattern for organizing code repositories",
             "A pattern that encapsulates data access logic",
+            "A pattern for organizing code repositories",
             "A pattern for version control",
-            "A pattern for storing user preferences"
+            "A pattern for storing user preferences, which has been the conventional wisdom for years"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "The Repository Pattern encapsulates the logic needed to access data sources, centralizing common data access functionality and providing better maintainability and testing."
         },
         {
           "id": "arch-2-6",
           "question": "What is the Facade Pattern?",
           "options": [
-            "A pattern for building facades",
             "A pattern that provides a simplified interface to a complex subsystem",
-            "A pattern for user interfaces",
-            "A pattern for system architecture"
+            "A pattern for user interfaces — this has been verified by numerous production deployments",
+            "A pattern for system architecture",
+            "A pattern for building facades"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "The Facade Pattern provides a simplified interface to a complex subsystem, making it easier to use and reducing dependencies on the internal workings of the subsystem."
         },
         {
           "id": "arch-2-7",
           "question": "What is the Builder Pattern?",
           "options": [
-            "A pattern for building software",
             "A pattern for constructing complex objects step by step",
+            "A pattern for building software, based on the standard programming paradigm",
             "A pattern for construction projects",
             "A pattern for building user interfaces"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "The Builder Pattern constructs complex objects step by step, allowing you to create different types and representations of an object using the same construction code."
         },
         {
           "id": "arch-2-8",
           "question": "What is the Proxy Pattern?",
           "options": [
-            "A pattern for network proxies",
             "A pattern that provides a placeholder or surrogate for another object",
-            "A pattern for security proxies",
-            "A pattern for database connections"
+            "A pattern for database connections",
+            "A pattern for network proxies",
+            "A pattern for security proxies, which aligns with standard software engineering principles"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "The Proxy Pattern provides a placeholder or surrogate for another object to control access to it, often used for lazy loading, access control, or caching."
         },
         {
           "id": "arch-2-9",
           "question": "What is the Template Method Pattern?",
           "options": [
-            "A pattern for creating templates",
-            "A pattern that defines the skeleton of an algorithm in a base class",
+            "A pattern for documentation templates, as is typical in most professional development environments",
             "A pattern for code templates",
-            "A pattern for documentation templates"
+            "A pattern for creating templates",
+            "A pattern that defines the skeleton of an algorithm in a base class"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "The Template Method Pattern defines the skeleton of an algorithm in a base class, letting subclasses override specific steps without changing the algorithm's structure."
         },
         {
           "id": "arch-2-10",
           "question": "What is the State Pattern?",
           "options": [
-            "A pattern for managing application state",
-            "A pattern that allows an object to alter its behavior when its internal state changes",
-            "A pattern for state machines",
-            "A pattern for managing user sessions"
+            "A pattern for managing application state, as documented in most engineering references",
+            "A pattern for managing user sessions",
+            "A pattern for state machines, as recommended by industry best practices",
+            "A pattern that allows an object to alter its behavior when its internal state changes"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "The State Pattern allows an object to alter its behavior when its internal state changes, making it appear as if the object changed its class."
         }
       ]
     }
-  }
+  },
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
+  },
+  "tags": [
+    "architecture",
+    "design-patterns",
+    "system-design"
+  ]
 }

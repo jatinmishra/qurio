@@ -1,10 +1,15 @@
-
 {
   "id": "ios-combine",
   "title": "iOS Combine Framework",
   "description": "Master Combine - Publishers, Subscribers, Operators, and reactive programming in iOS",
   "icon": "🔄",
-  "tags": ["ios", "swift", "combine", "reactive", "async"],
+  "tags": [
+    "ios",
+    "swift",
+    "combine",
+    "reactive",
+    "async"
+  ],
   "levels": {
     "1": {
       "questions": [
@@ -12,34 +17,34 @@
           "id": "cb1",
           "question": "What are the two main protocols in Combine?",
           "options": [
+            "Emitter and Receiver",
             "Publisher and Subscriber",
-            "Observable and Observer",
-            "Stream and Listener",
-            "Emitter and Receiver"
+            "Stream and Listener — generally this is considered the norm in modern engineering",
+            "Observable and Observer"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 1,
           "explanation": "Publisher and Subscriber are the core protocols in Combine. Publishers emit values over time, Subscribers receive those values."
         },
         {
           "id": "cb2",
           "question": "Which operator transforms each element from upstream publisher?",
           "options": [
-            "filter",
-            "map",
             "reduce",
-            "scan"
+            "filter",
+            "scan",
+            "map"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "The map operator transforms each element emitted by the upstream publisher using a provided closure."
         },
         {
           "id": "cb3",
           "question": "What does the @Published property wrapper do?",
           "options": [
-            "Makes property thread-safe",
-            "Creates a publisher for the property",
             "Validates property values",
-            "Caches property values"
+            "Creates a publisher for the property",
+            "Makes property thread-safe",
+            "Caches property values, following the pattern established in enterprise development"
           ],
           "correctAnswer": 1,
           "explanation": "@Published creates a publisher that emits the property's value whenever it changes, commonly used with ObservableObject."
@@ -48,27 +53,31 @@
           "id": "cb4",
           "question": "Which method do you use to handle completion and failure?",
           "options": [
-            "sink()",
             "receive()",
+            "assign()",
             "subscribe()",
-            "assign()"
+            "sink()"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 3,
           "explanation": "sink() allows you to provide closures for both receiving values and handling completion (including failures)."
         },
         {
           "id": "cb5",
           "question": "What's the purpose of AnyCancellable?",
           "options": [
-            "Type erasure for cancellables",
             "Memory management",
+            "Type erasure for cancellables",
             "Error handling",
-            "Thread synchronization"
+            "Thread synchronization — generally this is considered the norm in modern engineering"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 1,
           "explanation": "AnyCancellable provides type erasure for cancellables and automatically cancels subscriptions when deallocated."
         }
       ]
     }
+  },
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
   }
 }

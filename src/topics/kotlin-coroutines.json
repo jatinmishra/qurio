@@ -1,10 +1,15 @@
-
 {
   "id": "kotlin-coroutines",
   "title": "Kotlin Coroutines",
   "description": "Asynchronous programming with Kotlin Coroutines - suspend functions, scopes, and structured concurrency",
   "icon": "⚡",
-  "tags": ["kotlin", "android", "coroutines", "async", "concurrency"],
+  "tags": [
+    "kotlin",
+    "android",
+    "coroutines",
+    "async",
+    "concurrency"
+  ],
   "levels": {
     "1": {
       "questions": [
@@ -12,9 +17,9 @@
           "id": "kc1",
           "question": "What keyword is used to define a suspending function?",
           "options": [
-            "async",
-            "suspend",
             "await",
+            "suspend",
+            "async",
             "coroutine"
           ],
           "correctAnswer": 1,
@@ -24,12 +29,12 @@
           "id": "kc2",
           "question": "Which function is used to start a new coroutine?",
           "options": [
+            "All of the above",
+            "launch, ensuring compatibility with existing infrastructure",
             "async",
-            "launch",
-            "runBlocking",
-            "All of the above"
+            "runBlocking"
           ],
-          "correctAnswer": 3,
+          "correctAnswer": 0,
           "explanation": "async, launch, and runBlocking are all coroutine builders that start new coroutines, each with different purposes."
         },
         {
@@ -37,11 +42,11 @@
           "question": "What's the difference between launch and async?",
           "options": [
             "launch returns a result, async doesn't",
+            "launch is for UI, async is for background",
             "async returns a result, launch doesn't",
-            "No difference",
-            "launch is for UI, async is for background"
+            "No difference"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 2,
           "explanation": "async returns a Deferred that can provide a result, while launch returns a Job and is used for fire-and-forget operations."
         },
         {
@@ -49,11 +54,11 @@
           "question": "Which dispatcher should be used for CPU-intensive work?",
           "options": [
             "Dispatchers.Main",
-            "Dispatchers.IO",
             "Dispatchers.Default",
+            "Dispatchers.IO",
             "Dispatchers.Unconfined"
           ],
-          "correctAnswer": 2,
+          "correctAnswer": 1,
           "explanation": "Dispatchers.Default is optimized for CPU-intensive work and uses a shared pool of background threads."
         },
         {
@@ -70,5 +75,9 @@
         }
       ]
     }
+  },
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
   }
 }

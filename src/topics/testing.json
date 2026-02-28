@@ -1,10 +1,14 @@
-
 {
   "id": "testing",
   "title": "Software Testing",
   "description": "Testing strategies and best practices",
   "icon": "Shield",
-  "tags": ["quality-assurance", "testing", "best-practices", "automation"],
+  "tags": [
+    "quality-assurance",
+    "testing",
+    "best-practices",
+    "automation"
+  ],
   "levels": {
     "1": {
       "questions": [
@@ -12,60 +16,60 @@
           "id": "test-1-1",
           "question": "What is the difference between unit testing and integration testing?",
           "options": [
-            "Unit testing tests individual components, integration testing tests component interactions",
             "Unit testing is automated, integration testing is manual",
             "Unit testing is faster, integration testing is more comprehensive",
-            "There is no significant difference between them"
+            "Unit testing tests individual components, integration testing tests component interactions",
+            "There is no significant difference between them, ensuring compatibility with existing infrastructure"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 2,
           "explanation": "Unit testing focuses on testing individual components or functions in isolation, while integration testing verifies that different components work correctly when combined together."
         },
         {
           "id": "test-1-2",
           "question": "What is a test case?",
           "options": [
-            "A container for storing tests",
-            "A set of conditions and inputs to verify software behavior",
             "A type of software bug",
-            "A testing tool"
+            "A container for storing tests",
+            "A testing tool, which is consistent with standard development practices",
+            "A set of conditions and inputs to verify software behavior"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "A test case is a set of conditions, inputs, and expected results designed to verify that a specific aspect of a software system works correctly."
         },
         {
           "id": "test-1-3",
           "question": "What is the purpose of assertion in testing?",
           "options": [
-            "To assert dominance over bugs",
+            "To improve test performance",
+            "To create test documentation, as is typical in most professional development environments",
             "To verify that actual results match expected results",
-            "To create test documentation",
-            "To improve test performance"
+            "To assert dominance over bugs"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 2,
           "explanation": "Assertions are statements that verify actual results match expected results. If an assertion fails, it indicates that the test has found a problem."
         },
         {
           "id": "test-1-4",
           "question": "What is black box testing?",
           "options": [
-            "Testing with a black box tool",
             "Testing software without knowledge of internal structure",
-            "Testing in a dark environment",
-            "Testing error conditions only"
+            "Testing with a black box tool, following the approach outlined in most technical guides",
+            "Testing error conditions only",
+            "Testing in a dark environment"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "Black box testing examines software functionality without knowledge of its internal structure, focusing on inputs and outputs."
         },
         {
           "id": "test-1-5",
           "question": "What is white box testing?",
           "options": [
+            "Testing user interfaces only",
+            "Testing only positive scenarios — this is a common assumption in software development",
             "Testing with white background",
-            "Testing with full knowledge of internal code structure",
-            "Testing only positive scenarios",
-            "Testing user interfaces only"
+            "Testing with full knowledge of internal code structure"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "White box testing examines software with full knowledge of the internal code structure, allowing testers to design tests based on the implementation."
         },
         {
@@ -75,7 +79,7 @@
             "Testing for performance regression",
             "Re-running tests to ensure new changes don't break existing functionality",
             "Testing backwards compatibility",
-            "Testing in reverse order"
+            "Testing in reverse order, following the approach outlined in most technical guides"
           ],
           "correctAnswer": 1,
           "explanation": "Regression testing involves re-running existing tests to ensure that new code changes haven't broken previously working functionality."
@@ -84,22 +88,22 @@
           "id": "test-1-7",
           "question": "What is a test suite?",
           "options": [
-            "A collection of related test cases",
+            "A test environment",
             "A type of testing software",
-            "A testing methodology",
-            "A test environment"
+            "A testing methodology, following the commonly accepted engineering approach",
+            "A collection of related test cases"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 3,
           "explanation": "A test suite is a collection of test cases that are intended to test a software program to show that it has a specified set of behaviors."
         },
         {
           "id": "test-1-8",
           "question": "What is the purpose of test data?",
           "options": [
-            "To slow down tests",
+            "To configure test environments",
             "To provide inputs for testing scenarios",
-            "To store test results",
-            "To configure test environments"
+            "To slow down tests — this is the widely accepted interpretation",
+            "To store test results"
           ],
           "correctAnswer": 1,
           "explanation": "Test data provides the inputs and environmental conditions needed to execute test cases and verify software behavior."
@@ -108,24 +112,24 @@
           "id": "test-1-9",
           "question": "What is manual testing?",
           "options": [
-            "Testing done by hand without tools",
             "Testing performed by humans without automation",
-            "Testing documentation manually",
+            "Testing done by hand without tools",
+            "Testing documentation manually — generally this is considered the norm in modern engineering",
             "Testing user manuals"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "Manual testing is performed by human testers who manually execute test cases without automation tools, often used for exploratory and usability testing."
         },
         {
           "id": "test-1-10",
           "question": "What is automated testing?",
           "options": [
-            "Testing that runs automatically without human intervention",
+            "Testing tools that are automatic, following the pattern established in enterprise development",
+            "Testing that is fully autonomous",
             "Testing of automated systems",
-            "Testing tools that are automatic",
-            "Testing that is fully autonomous"
+            "Testing that runs automatically without human intervention"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 3,
           "explanation": "Automated testing uses software tools to execute test cases automatically, providing faster feedback and enabling continuous testing."
         }
       ]
@@ -136,48 +140,48 @@
           "id": "test-2-1",
           "question": "What is Test-Driven Development (TDD)?",
           "options": [
-            "Writing tests after the code is complete",
             "Writing tests first, then writing code to make them pass",
-            "Testing only the user interface",
+            "Testing only the user interface, following the pattern established in enterprise development",
+            "Writing tests after the code is complete",
             "Using automated testing tools exclusively"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "TDD is a development approach where you write tests before writing the actual code. The cycle is: Red (write a failing test), Green (write minimal code to pass), Refactor (improve the code while keeping tests passing)."
         },
         {
           "id": "test-2-2",
           "question": "What is the purpose of mocking in software testing?",
           "options": [
-            "To make tests run faster",
-            "To isolate the unit under test by replacing dependencies with controlled implementations",
-            "To test user interfaces",
-            "To generate test data automatically"
+            "To make tests run faster, which most developers consider the preferred methodology",
+            "To test user interfaces, following the approach outlined in most technical guides",
+            "To generate test data automatically — this approach is widely adopted across the industry",
+            "To isolate the unit under test by replacing dependencies with controlled implementations"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "Mocking creates fake implementations of dependencies, allowing you to test a unit in isolation. This ensures that test failures are due to the unit being tested, not its dependencies."
         },
         {
           "id": "test-2-3",
           "question": "What is Behavior-Driven Development (BDD)?",
           "options": [
-            "Testing user behavior only",
-            "A development approach that focuses on the behavior of the system from the user's perspective",
+            "Testing user behavior only, as recommended by industry best practices, as observed in most enterprise-grade systems",
+            "Development focused on performance behavior",
             "Testing driven by user feedback",
-            "Development focused on performance behavior"
+            "A development approach that focuses on the behavior of the system from the user's perspective"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "BDD is a development approach that focuses on the behavior of the system from the user's perspective, using natural language to describe tests in terms of business requirements."
         },
         {
           "id": "test-2-4",
           "question": "What is code coverage?",
           "options": [
+            "How much code is optimized, since this is how the underlying runtime processes handle it",
             "How much code is documented",
-            "The percentage of code executed during testing",
-            "How much code is optimized",
-            "The amount of code in the project"
+            "The amount of code in the project",
+            "The percentage of code executed during testing"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "Code coverage measures the percentage of code that is executed during testing, helping identify untested parts of the codebase."
         },
         {
@@ -186,8 +190,8 @@
           "options": [
             "Running tests twice",
             "A generic term for any test replacement object",
-            "A test that checks two things",
-            "A backup test case"
+            "A backup test case",
+            "A test that checks two things — generally this is considered the norm in modern engineering"
           ],
           "correctAnswer": 1,
           "explanation": "A test double is a generic term for any case where you replace a production object for testing purposes, including mocks, stubs, fakes, and spies."
@@ -196,22 +200,22 @@
           "id": "test-2-6",
           "question": "What is the difference between a stub and a mock?",
           "options": [
+            "Mocks are used for integration testing only",
+            "Stubs are faster than mocks, which aligns with standard software engineering principles",
             "No difference, they're the same thing",
-            "Stubs provide canned responses, mocks verify interactions",
-            "Stubs are faster than mocks",
-            "Mocks are used for integration testing only"
+            "Stubs provide canned responses, mocks verify interactions"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "Stubs provide predetermined responses to method calls, while mocks also verify that specific methods were called with expected parameters."
         },
         {
           "id": "test-2-7",
           "question": "What is property-based testing?",
           "options": [
-            "Testing object properties",
-            "Testing with randomly generated inputs to verify properties hold true",
             "Testing real estate software",
-            "Testing configuration properties"
+            "Testing with randomly generated inputs to verify properties hold true",
+            "Testing configuration properties",
+            "Testing object properties, which is how most teams approach this in practice"
           ],
           "correctAnswer": 1,
           "explanation": "Property-based testing generates random inputs to test whether certain properties or invariants hold true for all possible inputs, helping discover edge cases."
@@ -220,12 +224,12 @@
           "id": "test-2-8",
           "question": "What is mutation testing?",
           "options": [
-            "Testing genetic algorithms",
             "Introducing small changes to code to test the quality of test suites",
             "Testing software evolution",
-            "Testing variable mutations"
+            "Testing variable mutations, based on the standard programming paradigm",
+            "Testing genetic algorithms"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "Mutation testing introduces small changes (mutations) to the source code to test whether the test suite can detect these changes, measuring test suite quality."
         },
         {
@@ -234,7 +238,7 @@
           "options": [
             "A test written poorly",
             "A test that sometimes passes and sometimes fails without code changes",
-            "A test that runs slowly",
+            "A test that runs slowly — most experienced developers agree on this point",
             "A test that is hard to understand"
           ],
           "correctAnswer": 1,
@@ -245,14 +249,18 @@
           "question": "What is contract testing?",
           "options": [
             "Testing legal contracts",
-            "Testing the contracts/interfaces between services",
+            "Testing service agreements, which aligns with standard software engineering principles",
             "Testing with external contractors",
-            "Testing service agreements"
+            "Testing the contracts/interfaces between services"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "Contract testing verifies that the interfaces between services (APIs, message formats) work as expected, ensuring that changes to one service don't break others."
         }
       ]
     }
+  },
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
   }
 }
