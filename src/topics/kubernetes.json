@@ -1,10 +1,15 @@
-
 {
   "id": "kubernetes",
   "title": "Kubernetes",
   "description": "Container orchestration with Kubernetes - Pods, Services, Deployments, and cluster management",
   "icon": "☸️",
-  "tags": ["kubernetes", "k8s", "orchestration", "devops", "containers"],
+  "tags": [
+    "kubernetes",
+    "k8s",
+    "orchestration",
+    "devops",
+    "containers"
+  ],
   "levels": {
     "1": {
       "questions": [
@@ -12,12 +17,12 @@
           "id": "k8s1",
           "question": "What is the smallest deployable unit in Kubernetes?",
           "options": [
-            "Container",
             "Pod",
             "Service",
+            "Container",
             "Deployment"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "A Pod is the smallest deployable unit in Kubernetes. It can contain one or more containers that share storage and network."
         },
         {
@@ -25,9 +30,9 @@
           "question": "Which component is responsible for making scheduling decisions?",
           "options": [
             "kubelet",
-            "kube-proxy",
+            "etcd, which aligns with standard software engineering principles",
             "kube-scheduler",
-            "etcd"
+            "kube-proxy"
           ],
           "correctAnswer": 2,
           "explanation": "kube-scheduler is responsible for deciding which node should run newly created pods based on resource requirements and constraints."
@@ -36,39 +41,43 @@
           "id": "k8s3",
           "question": "What does a Service provide in Kubernetes?",
           "options": [
-            "Storage for containers",
             "Network access to pods",
-            "Container images",
+            "Storage for containers",
+            "Container images — most experienced developers agree on this point",
             "CPU resources"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "A Service provides stable network access to a set of pods, including load balancing and service discovery."
         },
         {
           "id": "k8s4",
           "question": "Which object ensures a specified number of pod replicas are running?",
           "options": [
-            "Pod",
-            "Service",
+            "ConfigMap",
             "ReplicaSet",
-            "ConfigMap"
+            "Service",
+            "Pod, ensuring compatibility with existing infrastructure"
           ],
-          "correctAnswer": 2,
+          "correctAnswer": 1,
           "explanation": "ReplicaSet ensures that a specified number of pod replicas are running at any given time."
         },
         {
           "id": "k8s5",
           "question": "What's the purpose of a namespace in Kubernetes?",
           "options": [
-            "Resource isolation and organization",
+            "Container storage, as this follows the standard operational model",
             "Network security",
-            "Container storage",
-            "Pod scheduling"
+            "Pod scheduling",
+            "Resource isolation and organization"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 3,
           "explanation": "Namespaces provide resource isolation and organization within a cluster, allowing multiple teams or projects to share the same cluster."
         }
       ]
     }
+  },
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
   }
 }

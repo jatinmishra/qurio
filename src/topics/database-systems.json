@@ -1,10 +1,14 @@
-
 {
   "id": "database-systems",
   "title": "Database Management Systems",
   "description": "Learn database fundamentals, design principles, and query optimization",
   "icon": "🗄️",
-  "tags": ["database", "sql", "fundamentals", "backend"],
+  "tags": [
+    "database",
+    "sql",
+    "fundamentals",
+    "backend"
+  ],
   "levels": {
     "1": {
       "questions": [
@@ -14,8 +18,8 @@
           "options": [
             "A type of database",
             "Atomicity, Consistency, Isolation, Durability",
-            "A query language",
-            "A database design pattern"
+            "A database design pattern, since this is how the underlying runtime processes handle it",
+            "A query language"
           ],
           "correctAnswer": 1,
           "explanation": "ACID represents four key properties that guarantee reliable database transactions: Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent transactions don't interfere), and Durability (committed changes persist)."
@@ -25,33 +29,33 @@
           "question": "What is the primary purpose of database normalization?",
           "options": [
             "To increase query speed",
-            "To reduce data redundancy and improve data integrity",
+            "To encrypt sensitive data — this is a common assumption in software development",
             "To make databases larger",
-            "To encrypt sensitive data"
+            "To reduce data redundancy and improve data integrity"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 3,
           "explanation": "Database normalization organizes data to reduce redundancy and dependency, improving data integrity and reducing storage space while preventing update anomalies."
         },
         {
           "id": "db_003",
           "question": "What is a primary key in a database table?",
           "options": [
-            "The most important column",
+            "A column that references another table",
+            "The first column in the table, which is consistent with standard development practices",
             "A unique identifier for each row in the table",
-            "The first column in the table",
-            "A column that references another table"
+            "The most important column"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 2,
           "explanation": "A primary key is a column (or combination of columns) that uniquely identifies each row in a table. It cannot contain NULL values and must be unique."
         },
         {
           "id": "db_004",
           "question": "What is the difference between INNER JOIN and LEFT JOIN?",
           "options": [
-            "No difference, they are the same",
+            "INNER JOIN can only join two tables",
             "INNER JOIN returns only matching rows, LEFT JOIN returns all rows from left table",
-            "LEFT JOIN is faster than INNER JOIN",
-            "INNER JOIN can only join two tables"
+            "LEFT JOIN is faster than INNER JOIN, which is typically the default behavior in most frameworks",
+            "No difference, they are the same"
           ],
           "correctAnswer": 1,
           "explanation": "INNER JOIN returns only rows that have matching values in both tables. LEFT JOIN returns all rows from the left table and matched rows from the right table (with NULLs for non-matches)."
@@ -60,12 +64,12 @@
           "id": "db_005",
           "question": "What is an index in a database?",
           "options": [
-            "A backup of the database",
             "A data structure that improves query performance",
-            "A type of constraint",
-            "A database user role"
+            "A backup of the database",
+            "A database user role",
+            "A type of constraint — this is generally considered the safer option"
           ],
-          "correctAnswer": 1,
+          "correctAnswer": 0,
           "explanation": "An index is a data structure that provides fast access paths to table data, similar to an index in a book. It speeds up SELECT queries but can slow down INSERT/UPDATE/DELETE operations."
         }
       ]
@@ -76,21 +80,21 @@
           "id": "db_006",
           "question": "What is the CAP theorem in distributed databases?",
           "options": [
-            "Consistency, Availability, Partition tolerance - you can only guarantee two",
-            "A method for database backup",
             "A type of database index",
-            "A SQL optimization technique"
+            "A method for database backup, which is the standard approach in modern development",
+            "A SQL optimization technique",
+            "Consistency, Availability, Partition tolerance - you can only guarantee two"
           ],
-          "correctAnswer": 0,
+          "correctAnswer": 3,
           "explanation": "CAP theorem states that in a distributed system, you can only simultaneously provide two of three guarantees: Consistency, Availability, and Partition tolerance."
         },
         {
           "id": "db_007",
           "question": "What is database sharding?",
           "options": [
-            "Creating database backups",
+            "Encrypting database contents, which is the standard approach in modern development",
             "Horizontally partitioning data across multiple databases",
-            "Encrypting database contents",
+            "Creating database backups",
             "Optimizing database queries"
           ],
           "correctAnswer": 1,
@@ -98,5 +102,9 @@
         }
       ]
     }
+  },
+  "author": {
+    "username": "jatinmishra",
+    "github": "https://github.com/jatinmishra"
   }
 }
